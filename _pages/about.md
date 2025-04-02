@@ -33,15 +33,6 @@ __Research Interests__:
 
 Earth Observation, Flow Matching, Diffusion models, Self-supervised Learning, Normalizing Flows, Computational Optimal Transport...
 
-### Publications 
-
-__Detecting Out-Of-Distribution Earth Observation Images with Diffusion Models__   Georges Le Bellier, Nicolas Audebert. _CVPR 2024 Earthvision workshop_.
-[[Proceedings]](https://openaccess.thecvf.com/content/CVPR2024W/EarthVision/html/Le_Bellier_Detecting_Out-Of-Distribution_Earth_Observation_Images_with_Diffusion_Models_CVPRW_2024_paper.html)[[Poster]](/pdfs/posterEV2024.pdf)
-
-__Flow Matching for Domain Adaptation in Earth Observation__,  
-Georges Le Bellier, Nicolas Audebert. _RFIAP 2024_.
-[[Poster]](/pdfs/eoflowRFIAP.pdf)
-
 ### Projects
 
 __PANGAEA__: A Global and Inclusive Benchmark for Geospatial Foundation Models. [[code]](https://github.com/yurujaja/pangaea-bench)
