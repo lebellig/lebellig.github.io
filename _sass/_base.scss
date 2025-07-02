@@ -4,27 +4,21 @@
 
 // Typography
 
-p,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-em,
-div,
-li,
-span,
-strong {
+p, h1, h2, h3, h4, h5, h6, em, div, span, strong {
   color: var(--global-text-color);
-  font-family: "IBM Plex Sans", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 300;
-  font-style: normal;
-  font-variation-settings:
-    "wdth" 100;
+  line-height: 1.5;
 }
-
+ 
+/* { */
+/*   color: var(--global-text-color); */
+/*   font-family: "IBM Plex Sans", sans-serif; */
+/*   font-optical-sizing: auto; */
+/*   font-weight: 300; */
+/*   font-style: normal; */
+/*   font-variation-settings: */
+/*     "wdth" 100; */
+/* } */
+/**/
 body {
   font-family: IBM Plex Sans, sans-serif;
   padding-bottom: 50px;
