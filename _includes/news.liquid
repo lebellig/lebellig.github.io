@@ -1,34 +1,50 @@
 <div class="news">
-  {% if site.news != blank %}
-    {% assign news_size = site.news | size %}
-    <div
-      class="table-responsive"
-      {% if include.limit and page.announcements.scrollable and news_size > 3 %}
-        style="max-height: 60vw"
-      {% endif %}
-    >
-      <table class="table table-sm table-borderless">
-        {% assign news = site.news | reverse %}
-        {% if include.limit and page.announcements.limit %}
-          {% assign news_limit = page.announcements.limit %}
-        {% else %}
-          {% assign news_limit = news_size %}
-        {% endif %}
-        {% for item in news limit: news_limit %}
-          <tr>
-            <th scope="row" style="width: 20%">{{ item.date | date: '%b %d, %Y' }}</th>
-            <td>
-              {% if item.inline %}
-                {{ item.content | remove: '<p>' | remove: '</p>' | emojify }}
-              {% else %}
-                <a class="news-title" href="{{ item.url | relative_url }}">{{ item.title }}</a>
-              {% endif %}
-            </td>
-          </tr>
-        {% endfor %}
-      </table>
-    </div>
-  {% else %}
-    <p>No news so far...</p>
-  {% endif %}
+  <h5 style="text-align: center; font-size: 150%; font-weight: 600; padding: 10px 0 10px 0;">Updates</h5>
+  <div class="table-responsive">
+    <table class="table table-sm table-borderless">
+      <tr><td style="padding-top: 0rem; padding: 0 0 0 0;">
+        [04/2024] I co-organize
+        ICML workshop on Structured Probabilistic Inference & Generative Modeling (<a href="https://spigmworkshop2024.github.io/" target="_blank">SPIGM</a>).
+      </td></tr>      <tr><td style="padding-top: 0rem; padding: 0 0 0 0;">
+        [02/2024]
+        <a href="https://arxiv.org/abs/2310.02233" target="_blank">Generalized Schrödinger Bridge Matching</a>
+        (with FAIR, Meta AI) accepted to ICLR.
+      </td></tr>
+      <tr><td style="padding-top: 0rem; padding: 0 0 0 0;">
+        [09/2023] Two papers,
+        <a href="https://arxiv.org/abs/2310.01236" target="_blank">Mirror Diffusion</a> and
+        <a href="https://arxiv.org/abs/2303.01751" target="_blank">Momentum Schrödinger Bridge</a>,
+        accepted to NeurIPS.
+      </td></tr>
+      <tr><td style="padding-top: 0rem; padding: 0 0 0 0;">
+        [05/2023] I have joined FAIR Lab, Meta AI as a research scientist intern this summer.
+      </td></tr>
+      <tr><td style="padding-top: 0rem; padding: 0 0 0 0;">
+        [04/2023] I co-organize
+        ICML workshop on New Frontiers in Learning, Control, and Dynamical Systems.
+        <!-- <a href="https://frontiers4lcd.github.io/" target="_blank">ICML workshop on New Frontiers in Learning, Control, and Dynamical Systems</a>. -->
+      </td></tr>
+      <tr><td style="padding-top: 0rem; padding: 0 0 0 0;">
+        [03/2023]
+        <a href="https://arxiv.org/abs/2302.05872" target="_blank">Image-to-Image Schrödinger Bridge</a>
+        (with <a href="https://i2sb.github.io/" target="_blank">Nvidia Research</a>) accepted to ICML.
+      </td></tr>
+      <tr><td style="padding-top: 0rem; padding: 0 0 0 0;">
+        [09/2022]
+        <a href="https://arxiv.org/abs/2209.09893" target="_blank">Deep Generalized Schrödinger Bridge</a>
+        accepted to NeurIPS (Oral 1.9%).
+      </td></tr>
+      <tr><td style="padding-top: 0rem; padding: 0 0 0 0;">
+        [02/2022]
+        <a href="https://arxiv.org/abs/2110.11291" target="_blank">Likelihood training of Schrödinger Bridge</a>
+        accepted to ICLR.
+      </td></tr>
+      <tr><td style="padding-top: 0rem; padding: 0 0 0 0;">
+        [09/2021] Three papers on
+        <a href="https://arxiv.org/abs/2109.14158" target="_blank">architecture-aware</a>
+        <a href="https://arxiv.org/abs/2105.03788" target="_blank">neural</a>
+        <a href="https://arxiv.org/abs/2002.08809" target="_blank">optimizers</a> accepted to NeurIPS (Spotlight 3.0%), ICML (Oral 3.0%), and ICLR (Spotlight 3.8%).
+      </td></tr>
+    </table>
+  </div>
 </div>
