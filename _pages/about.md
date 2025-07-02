@@ -13,7 +13,7 @@ profile:
     <p>Paris, France</p>
 
 selected_papers: true # includes a list of papers marked as "selected={true}"
-social: true # includes social icons at the bottom of the page
+social: false # includes social icons at the bottom of the page
 
 announcements:
   enabled: false # includes a list of news items
@@ -26,12 +26,24 @@ latest_posts:
   limit: 3 # leave blank to include all the blog posts
 ---
 
->__Ph.D. Student__ on domain adaptation and self-supervised learning for Earth Observation at _Conservatoire National des Arts et Métiers_, as part of the ANR [MAGE.](https://geo-mage.github.io)  
-> Formerly MSc. SDIA (_Centrale Lille_) and MSc. ATIAM (_IRCAM_, _Sorbonne University_, _Telecom Paris_) 
+__Ph.D. Student__ on domain adaptation and self-supervised learning for Earth Observation at _Conservatoire National des Arts et Métiers_, as part of the ANR [MAGE.](https://geo-mage.github.io)  
+Formerly MSc. SDIA (_Centrale Lille_) and MSc. ATIAM (_IRCAM_, _Sorbonne University_, _Telecom Paris_) 
 
 __Research Interests__: 
 
 Earth Observation, Flow Matching, Diffusion models, Self-supervised Learning, Normalizing Flows, Computational Optimal Transport...
+
+
+<strong>Contact: </strong>
+      georges.lebellier [at] gmail [dot] com
+<br>
+<strong>Follow: </strong>
+      <a href="https://www.linkedin.com/in/georges-le-bellier/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i> LinkedIn</a>
+      <strong> | </strong>
+      <a href="https://github.com/lebellig" target="_blank" title="GitHub"><i class="fab fa-github"></i> lebellig</a>
+      <strong> | </strong>
+      <a href="https://bsky.app/profile/lebellig.bsky.social" target="_blank" title="Bluesky"><i class="fab fa-bluesky"></i> @lebellig</a>
+<br><br>
 
 ### Projects
 
