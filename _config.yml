@@ -6,8 +6,7 @@ title: blank # the website title (if blank, full name will be used instead)
 first_name: Georges
 middle_name: 
 last_name: Le Bellier
-contact_note: >
-  You can even add a little note about which of these is the best way to reach you.
+contact_note: 
 description: Deep Learning PhD @ CNAM
 footer_text: >
 keywords: generativeAI, remote-sensing # add your own keywords or leave empty
