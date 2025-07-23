@@ -24,7 +24,7 @@ latest_posts:
   limit: 3 # leave blank to include all the blog posts
 ---
 
-__Ph.D. Student__ on generative models and domain adaptation learning for Earth Observation at _Conservatoire National des Arts et Métiers_, as part of [MAGE.](https://geo-mage.github.io)  
+__Ph.D. Student__ on generative models and domain adaptation methods for Earth Observation at _Conservatoire National des Arts et Métiers_, as part of [MAGE.](https://geo-mage.github.io)  
 Formerly MSc. SDIA (_Centrale Lille_) and MSc. ATIAM (_IRCAM_, _Sorbonne University_, _Telecom Paris_) 
 
 __Research Interests__: 
@@ -36,9 +36,9 @@ Earth Observation, Flow Matching, Diffusion/Schrödinger bridges, Generative Mod
       georges.lebellier [at] gmail [dot] com
 <br>
 <strong>Follow: </strong>
+      <a href="https://bsky.app/profile/lebellig.bsky.social" target="_blank" title="Bluesky"><i class="fab fa-bluesky"></i> @lebellig</a>
       <a href="https://www.linkedin.com/in/georges-le-bellier/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i> LinkedIn</a>
       <strong> | </strong>
       <a href="https://github.com/lebellig" target="_blank" title="GitHub"><i class="fab fa-github"></i> lebellig</a>
       <strong> | </strong>
-      <a href="https://bsky.app/profile/lebellig.bsky.social" target="_blank" title="Bluesky"><i class="fab fa-bluesky"></i> @lebellig</a>
 <br><br>
