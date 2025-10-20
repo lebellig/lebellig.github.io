@@ -21,6 +21,8 @@ GEM
       tzinfo (~> 2.0)
     addressable (2.8.7)
       public_suffix (>= 2.0.2, < 7.0)
+    ansi (1.5.0)
+    ast (2.4.3)
     base64 (0.2.0)
     bibtex-ruby (6.1.0)
       latex-decode (~> 0.0)
@@ -173,6 +175,9 @@ GEM
     nokogiri (1.17.2-x86_64-linux)
       racc (~> 1.4)
     observer (0.1.2)
+    oga (3.4)
+      ast
+      ruby-ll (~> 2.1)
     ostruct (0.6.1)
     pathutil (0.16.2)
       forwardable-extended (~> 2.6)
@@ -184,6 +189,9 @@ GEM
       ffi (~> 1.0)
     rexml (3.4.0)
     rouge (4.5.1)
+    ruby-ll (2.1.4)
+      ansi
+      ast
     safe_yaml (1.0.5)
     sass-embedded (1.69.5)
       google-protobuf (~> 3.23)
@@ -237,7 +245,9 @@ DEPENDENCIES
   jekyll-toc
   jekyll-twitter-plugin
   jemoji
+  nokogiri (~> 1.17)
   observer
+  oga (~> 3.4)
   ostruct
   terser
 

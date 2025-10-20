@@ -36,3 +36,7 @@ group :other_plugins do
     # gem 'unicode_utils' -- should be already installed by jekyll
     # gem 'webrick' -- should be already installed by jekyll
 end
+
+gem "nokogiri", "~> 1.17"
+
+gem "oga", "~> 3.4"
