@@ -13,7 +13,23 @@ toc:
 
 ## I. Introduction
 
-In this post, we present *data translation* methods grounded in *diffusion bridges* and *stochastic interpolants*. These approaches extend diffusion and flow-matching frameworks to data-to-data translation, that is, the transport between two arbitrary distributions. We assume access only to samples from the source and target distributions, $$p_0$$ and $$p_1$$, with no prior knowledge of their structure and without access to likelihoods or energy scores.
+<div id="fig-1" class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/related/distribution_matching.png" class="img-fluid rounded" zoomable=true %}
+    </div>
+</div>
+<div class="caption">
+    <strong>Figure 1.</strong> Distribution matching methods aim at building a bridge between two probability distributions. Samples \(x_0\) drawn from the source distribution \(p_0\) are mapped through a transport operator \(T\) to produce new samples \(x_1 = T(x_0)\), whose distribution matches the target distribution \(p_1\).
+</div>
+
+The problem of neural-network-based *transport* between probability measures is formulated as the identification of a transformation $$T : \mathcal{X}_0 \rightarrow \mathcal{X}_1$$ that maps samples drawn from an initial distribution $$p_0$$ to a target distribution $$p_1$$ ([Fig. 1](#fig-1)). Applications of distribution matching are broadly divided into two main settings:
+
+1. *Generative modeling* aims to bridge a simple, well-understood, and easily sampled *prior distribution* (often Gaussian) to a complex data distribution. In practice, the data distribution is typically accessible only through samples.
+2. *Data translation* seeks to bridge two complex distributions. Rather than having access to explicit models, one usually relies on empirical distributions, that is, samples from both the source and target domains.
+
+Recent advances have revealed strong theoretical links between statistical physics and high-dimensional deep learning, motivating the development of a wide range of frameworks inspired by physical processes (diffusion, heat, and Poisson equations...). These approaches have been successfully applied to both generative modeling {% cite xu2022poisson teh2003energy rissanen2023generative song2021scorebased %} and data translation tasks {% cite Särkkä_Solin_2019 schrodinger1932theorie de2021diffusion %}.
+
+**In this post, we focus on setting 2, data translation,** where both $$p_0$$ and $$p_1$$ are arbitrary complex distributions, and the goal is to transport samples from one to the other using *diffusion bridges* and *stochastic interpolants*. We assume access only to samples from both distributions, with no prior knowledge of their structure. Setting 1, generative modeling where $$p_0$$ is a simple Gaussian prior and $$p_1 = p_\text{data}$$, is covered in a [companion post](/blog/2026/generative-modeling/).
 
 While many problems can be framed as data translation tasks, for instance, classification can be interpreted as transporting data from the input space to the label space, we restrict this post to translations that preserve dimensionality. Specifically, we consider mappings between data points that lie in the same space, such as image-to-image translation.
 
@@ -33,16 +49,16 @@ More recently, successful applications of the *Doob $$h$$-transform* to *twist* 
 
 ## III. Mixture of Bridges
 
-<div id="fig-1" class="row mt-3">
+<div id="fig-2" class="row mt-3">
     <div class="col-sm mt-3 mt-md-0">
         {% include figure.liquid loading="eager" path="assets/img/related/diffusion_bridge.png" class="img-fluid rounded" zoomable=true %}
     </div>
 </div>
 <div class="caption">
-    <strong>Figure 1.</strong> Mixture of Bridges transports samples from \(p_0\) to \(p_1\) using stochastic differential equations. Unlike diffusion and Gaussian flow-matching models, both \(p_0\) and \(p_1\) are complex data distributions. A neural network approximation of the forward drift \(v_\theta\) enables the generation of new samples from \(p_1\) by integrating the forward SDE.
+    <strong>Figure 2.</strong> Mixture of Bridges transports samples from \(p_0\) to \(p_1\) using stochastic differential equations. Unlike diffusion and Gaussian flow-matching models, both \(p_0\) and \(p_1\) are complex data distributions. A neural network approximation of the forward drift \(v_\theta\) enables the generation of new samples from \(p_1\) by integrating the forward SDE.
 </div>
 
-Motivated by the success of diffusion models, the transport between an initial distribution $$p_0$$ and a target distribution $$p_1$$ is modeled by a stochastic differential equation ([Fig. 1](#fig-1)) that defines a probabilistic bridge between the two:
+Motivated by the success of diffusion models, the transport between an initial distribution $$p_0$$ and a target distribution $$p_1$$ is modeled by a stochastic differential equation ([Fig. 2](#fig-2)) that defines a probabilistic bridge between the two:
 
 $$dx_t = v(t, x_t)\,dt + \sigma\,dW_t, \qquad x_0 \sim p_0,\; x_1 \sim p_1.$$
 
@@ -64,16 +80,16 @@ This formula casts light on the two main components of the transport, namely the
 
 ### Conditional Brownian Bridges
 
-<div id="fig-2" class="row mt-3">
+<div id="fig-3" class="row mt-3">
     <div class="col-sm mt-3 mt-md-0">
         {% include figure.liquid loading="eager" path="assets/img/related/stochastic_interpolant.png" class="img-fluid rounded" zoomable=true %}
     </div>
 </div>
 <div class="caption">
-    <strong>Figure 2.</strong> Illustration of scaled Brownian bridges \(\mathbb{Q}_{|0,1}\). Increasing the diffusion rate \(\sigma\) adds stochasticity while preserving the fixed endpoints \(x_0\) and \(x_1\). The case \(\sigma = 0\) corresponds to the linear interpolation used in flow matching.
+    <strong>Figure 3.</strong> Illustration of scaled Brownian bridges \(\mathbb{Q}_{|0,1}\). Increasing the diffusion rate \(\sigma\) adds stochasticity while preserving the fixed endpoints \(x_0\) and \(x_1\). The case \(\sigma = 0\) corresponds to the linear interpolation used in flow matching.
 </div>
 
-*Mixture of bridges* uses a *Brownian bridge* as its reference process. Given two data points $$x_0 \sim p_0$$ and $$x_1 \sim p_1$$, the conditional Brownian bridge defines a stochastic path $$\mathbb{Q}_{\mid 0,1}(\cdot \mid x_0, x_1)$$ that starts at $$x_0$$ and ends at $$x_1$$ ([Fig. 2](#fig-2)). Intermediate points along this path can be generated using a *stochastic interpolant* {% cite albergo2023stochastic albergo2022building %}:
+*Mixture of bridges* uses a *Brownian bridge* as its reference process. Given two data points $$x_0 \sim p_0$$ and $$x_1 \sim p_1$$, the conditional Brownian bridge defines a stochastic path $$\mathbb{Q}_{\mid 0,1}(\cdot \mid x_0, x_1)$$ that starts at $$x_0$$ and ends at $$x_1$$ ([Fig. 3](#fig-3)). Intermediate points along this path can be generated using a *stochastic interpolant* {% cite albergo2023stochastic albergo2022building %}:
 
 $$x_t = (1-t)x_0 + t x_1 + \sigma \sqrt{t(1-t)} \, \epsilon, \quad \epsilon \sim \mathcal{N}(0, I_d),$$
 
@@ -86,16 +102,16 @@ with $$x_t$$ defined by the stochastic interpolant above.
 
 ### Couplings
 
-<div id="fig-3" class="row mt-3">
+<div id="fig-4" class="row mt-3">
     <div class="col-sm mt-3 mt-md-0">
         {% include figure.liquid loading="eager" path="assets/img/related/couplings_final.png" class="img-fluid rounded" zoomable=true %}
     </div>
 </div>
 <div class="caption">
-    <strong>Figure 3.</strong> Illustration of the different couplings \(\mathbb{P}_{0,1}\) used in mixtures of bridges. (Left) The <em>independent coupling</em> samples \(x_0\) and \(x_1\) independently. (Middle) The <em>data-dependent coupling</em> defines the joint distribution via a conditional \(p(x_1 \mid x_0)\), matching data points that share relevant information. (Right) The <em>minibatch-OT coupling</em> associates data points by minimizing the total distance between matched pairs.
+    <strong>Figure 4.</strong> Illustration of the different couplings \(\mathbb{P}_{0,1}\) used in mixtures of bridges. (Left) The <em>independent coupling</em> samples \(x_0\) and \(x_1\) independently. (Middle) The <em>data-dependent coupling</em> defines the joint distribution via a conditional \(p(x_1 \mid x_0)\), matching data points that share relevant information. (Right) The <em>minibatch-OT coupling</em> associates data points by minimizing the total distance between matched pairs.
 </div>
 
-The choice of the *coupling* $$\mathbb{P}_{0,1}$$ is crucial ([Fig. 3](#fig-3)). A naive approach is to sample $$(x_0, x_1)$$ independently from $$p(x_0)p(x_1)$$, which allows transporting $$p_0$$ to $$p_1$$ but fails to preserve high-level information from the original data points. For aligned datasets, where pairs of corresponding points $$(x_0, x_1)$$ are available, {% cite albergo2023couplings liu_i2sb_2023 %} suggest using *data-dependent couplings* $$p(x_0, x_1) = p(x_1 \mid x_0)p(x_0)$$, treating the dataset pairs as samples from this coupling. More recently, {% cite theodoropoulos2025feedback %} extended diffusion bridges to scenarios where only a small fraction of aligned data is available. These methods enforce desirable transport properties by explicitly providing pairs of points that share them. For example, in denoising, $$(x_0, x_1)$$ can be a noisy image and its clean counterpart, both preserving the same semantic content. In super-resolution, natural pairs are high-resolution images and their downsampled versions.
+The choice of the *coupling* $$\mathbb{P}_{0,1}$$ is crucial ([Fig. 4](#fig-4)). A naive approach is to sample $$(x_0, x_1)$$ independently from $$p(x_0)p(x_1)$$, which allows transporting $$p_0$$ to $$p_1$$ but fails to preserve high-level information from the original data points. For aligned datasets, where pairs of corresponding points $$(x_0, x_1)$$ are available, {% cite albergo2023couplings liu_i2sb_2023 %} suggest using *data-dependent couplings* $$p(x_0, x_1) = p(x_1 \mid x_0)p(x_0)$$, treating the dataset pairs as samples from this coupling. More recently, {% cite theodoropoulos2025feedback %} extended diffusion bridges to scenarios where only a small fraction of aligned data is available. These methods enforce desirable transport properties by explicitly providing pairs of points that share them. For example, in denoising, $$(x_0, x_1)$$ can be a noisy image and its clean counterpart, both preserving the same semantic content. In super-resolution, natural pairs are high-resolution images and their downsampled versions.
 
 However, in many practical scenarios, paired samples are not available, leading to the problem of *unpaired data translation*. This challenge is often addressed using the Schrödinger bridge framework {% cite bortoli2024schrodinger peluchetti_diffusion_2023 %}, which relies on *optimal transport-based couplings* to define plausible correspondences between distributions. We expand on this approach in the **Schrödinger Diffusion Bridges** section.
 
