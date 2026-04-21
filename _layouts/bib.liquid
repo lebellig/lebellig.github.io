@@ -44,7 +44,7 @@
       {%- for author in entry.author_array limit: author_array_limit -%}
         {% assign author_is_self = false %}
         {%- assign author_last_name = author.last | regex_replace: '[*∗†‡§¶‖&^]', '' -%}
-        {%- assign author_last_html = author.last | regex_replace: '([*∗†‡§¶‖&^]+)', '<sup>\1</sup>' -%}
+        {%- assign author_last_html = author.last | regex_replace: '([*∗†‡§¶‖&^]+)', '<sup>\1</sup>' | strip -%}
         {% if site.scholar.last_name contains author_last_name and site.scholar.first_name contains author.first %}
           {% assign author_is_self = true %}
         {% endif %}
@@ -116,19 +116,24 @@
         {% if entry.note %} &ndash; {{ entry.note }}{% endif %}
       </div>
 
-      <div class="links d-flex flex-wrap align-items-center gap-1">
-        {% if entry.award %}<a class="award btn btn-sm z-depth-0" role="button">{{ entry.award_name | default: 'Awarded' }}</a>&nbsp;&nbsp;&nbsp;&nbsp;{% endif %}
-        {% if entry.arxiv %}<a href="http://arxiv.org/abs/{{ entry.arxiv }}">arXiv</a>&nbsp;&nbsp;&nbsp;&nbsp;{% endif %}
-        {% if entry.bibtex_show %}<a class="bibtex btn btn-sm z-depth-0" role="button">Bib</a>&nbsp;&nbsp;&nbsp;&nbsp;{% endif %}
-        {% if entry.html %}<a href="{{ entry.html contains '://' | ternary: entry.html, entry.html | prepend: '/assets/html/' | relative_url }}" class="btn btn-sm z-depth-0" role="button">HTML</a>&nbsp;&nbsp;&nbsp;&nbsp;{% endif %}
-        {% if entry.pdf %}<a href="{{ entry.pdf contains '://' | ternary: entry.pdf, entry.pdf| relative_url }}">pdf</a>&nbsp;&nbsp;&nbsp;&nbsp;{% endif %}
-        {% if entry.supp %}<a href="{{ entry.supp contains '://' | ternary: entry.supp, entry.supp | prepend: '/assets/pdf/' | relative_url }}">pdf</a>&nbsp;&nbsp;&nbsp;&nbsp;{% endif %}
-        {% if entry.video and site.enable_video_embedding %}<a class="abstract btn btn-sm z-depth-0" role="button">Video</a>&nbsp;&nbsp;&nbsp;&nbsp;{% elsif entry.video %}<a href="{{ entry.video }}" class="btn btn-sm z-depth-0" role="button">Video</a>&nbsp;&nbsp;&nbsp;&nbsp;{% endif %}
-        {% if entry.blog %}<a href="{{ entry.blog }}" class="btn btn-sm z-depth-0" role="button">Blog</a>&nbsp;&nbsp;&nbsp;&nbsp;{% endif %}
-        {% if entry.code %}<a href="{{ entry.code }}">code</a>&nbsp;&nbsp;&nbsp;&nbsp;{% endif %}
-        {% if entry.poster %}<a href="{{ entry.poster contains '://' | ternary: entry.poster, entry.poster | prepend: '/assets/pdf/' | relative_url }}">poster</a>&nbsp;&nbsp;&nbsp;&nbsp;{% endif %}
-        {% if entry.slides %}<a href="{{ entry.slides contains '://' | ternary: entry.slides, entry.slides | prepend: '/assets/pdf/' | relative_url }}" class="btn btn-sm z-depth-0" role="button">Slides</a>&nbsp;&nbsp;&nbsp;&nbsp;{% endif %}
-        {% if entry.website %}<a href="{{ entry.website }}" class="btn btn-sm z-depth-0" role="button">Website</a>&nbsp;&nbsp;&nbsp;&nbsp;{% endif %}
+      <div class="links">
+        {%- assign _first_link = true -%}
+        {%- assign _has_links = false -%}
+        {%- if entry.award or entry.arxiv or entry.bibtex_show or entry.html or entry.pdf or entry.supp or entry.video or entry.blog or entry.code or entry.poster or entry.slides or entry.website -%}{%- assign _has_links = true -%}{%- endif -%}
+        {%- if _has_links -%}[{%- endif -%}
+        {%- if entry.award -%}{%- unless _first_link -%}, {%- endunless -%}<a class="award btn btn-sm z-depth-0" role="button">{{ entry.award_name | default: 'Awarded' }}</a>{%- assign _first_link = false -%}{%- endif -%}
+        {%- if entry.arxiv -%}{%- unless _first_link -%}, {%- endunless -%}<a href="http://arxiv.org/abs/{{ entry.arxiv }}">arXiv</a>{%- assign _first_link = false -%}{%- endif -%}
+        {%- if entry.bibtex_show -%}{%- unless _first_link -%}, {%- endunless -%}<a class="bibtex btn btn-sm z-depth-0" role="button">Bib</a>{%- assign _first_link = false -%}{%- endif -%}
+        {%- if entry.html -%}{%- unless _first_link -%}, {%- endunless -%}<a href="{{ entry.html contains '://' | ternary: entry.html, entry.html | prepend: '/assets/html/' | relative_url }}">HTML</a>{%- assign _first_link = false -%}{%- endif -%}
+        {%- if entry.pdf -%}{%- unless _first_link -%}, {%- endunless -%}<a href="{{ entry.pdf contains '://' | ternary: entry.pdf, entry.pdf | relative_url }}">pdf</a>{%- assign _first_link = false -%}{%- endif -%}
+        {%- if entry.supp -%}{%- unless _first_link -%}, {%- endunless -%}<a href="{{ entry.supp contains '://' | ternary: entry.supp, entry.supp | prepend: '/assets/pdf/' | relative_url }}">supp</a>{%- assign _first_link = false -%}{%- endif -%}
+        {%- if entry.video -%}{%- unless _first_link -%}, {%- endunless -%}{%- if site.enable_video_embedding -%}<a class="abstract btn btn-sm z-depth-0" role="button">video</a>{%- else -%}<a href="{{ entry.video }}">video</a>{%- endif -%}{%- assign _first_link = false -%}{%- endif -%}
+        {%- if entry.blog -%}{%- unless _first_link -%}, {%- endunless -%}<a href="{{ entry.blog }}">blog</a>{%- assign _first_link = false -%}{%- endif -%}
+        {%- if entry.code -%}{%- unless _first_link -%}, {%- endunless -%}<a href="{{ entry.code }}">code</a>{%- assign _first_link = false -%}{%- endif -%}
+        {%- if entry.poster -%}{%- unless _first_link -%}, {%- endunless -%}<a href="{{ entry.poster contains '://' | ternary: entry.poster, entry.poster | prepend: '/assets/pdf/' | relative_url }}">poster</a>{%- assign _first_link = false -%}{%- endif -%}
+        {%- if entry.slides -%}{%- unless _first_link -%}, {%- endunless -%}<a href="{{ entry.slides contains '://' | ternary: entry.slides, entry.slides | prepend: '/assets/pdf/' | relative_url }}">slides</a>{%- assign _first_link = false -%}{%- endif -%}
+        {%- if entry.website -%}{%- unless _first_link -%}, {%- endunless -%}<a href="{{ entry.website }}">website</a>{%- assign _first_link = false -%}{%- endif -%}
+        {%- if _has_links -%}]{%- endif -%}
       </div>
     </div>
 

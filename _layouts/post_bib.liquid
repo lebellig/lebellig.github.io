@@ -1,0 +1,14 @@
+---
+---
+<div id="{{ entry.key }}" class="post-bib-entry" style="margin-bottom: 0.4em;">
+  {{ entry.title }},
+  {%- assign author_array_size = entry.author_array | size -%}
+  {%- for author in entry.author_array -%}
+    {%- if forloop.first == false %}, {% endif -%}
+    {{- author.first }} {{ author.last -}}
+  {%- endfor -%},
+  {%- if entry.journal %} <em>{{ entry.journal }}</em>
+  {%- elsif entry.booktitle %} <em>{{ entry.booktitle }}</em>
+  {%- elsif entry.school %} <em>{{ entry.school }}</em>
+  {%- endif -%}.
+</div>
