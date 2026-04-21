@@ -42,27 +42,27 @@
       {% endif %}
 
       {%- for author in entry.author_array limit: author_array_limit -%}
-        {% assign author_is_self = false %}
+        {%- assign author_is_self = false -%}
         {%- assign author_last_name = author.last | regex_replace: '[*∗†‡§¶‖&^]', '' -%}
         {%- assign author_last_html = author.last | regex_replace: '([*∗†‡§¶‖&^]+)', '<sup>\1</sup>' | strip -%}
-        {% if site.scholar.last_name contains author_last_name and site.scholar.first_name contains author.first %}
-          {% assign author_is_self = true %}
-        {% endif %}
-        {% assign coauthor_url = null %}
+        {%- if site.scholar.last_name contains author_last_name and site.scholar.first_name contains author.first -%}
+          {%- assign author_is_self = true -%}
+        {%- endif -%}
+        {%- assign coauthor_url = null -%}
         {%- assign clean_last_name = author_last_name | downcase | remove_accents -%}
-        {% if site.data.coauthors[clean_last_name] %}
+        {%- if site.data.coauthors[clean_last_name] -%}
           {%- for coauthor in site.data.coauthors[clean_last_name] -%}
-            {% if coauthor.firstname contains author.first %}
+            {%- if coauthor.firstname contains author.first -%}
               {%- assign coauthor_url = coauthor.url -%}
-              {% break %}
-            {% endif %}
-          {% endfor %}
-        {% endif %}
+              {%- break -%}
+            {%- endif -%}
+          {%- endfor -%}
+        {%- endif -%}
 
         {%- if forloop.length > 1 -%}
-          {% if forloop.first == false %},&nbsp;{% endif %}
-          {%- if forloop.last and author_array_limit == author_array_size %}and&nbsp;{% endif -%}
-        {% endif %}
+          {%- if forloop.first == false -%}, {% endif -%}
+          {%- if forloop.last and author_array_limit == author_array_size -%}and {% endif -%}
+        {%- endif -%}
         {%- if author_is_self -%}
           <em>{{- author.first }} {{ author_last_html -}}</em>
         {%- else -%}
@@ -70,14 +70,13 @@
             <a href="{{ coauthor_url }}">{{- author.first }} {{ author_last_html -}}</a>
           {%- else -%}
             {{- author.first }} {{ author_last_html -}}
-          {% endif %}
+          {%- endif -%}
         {%- endif -%}
-      {% endfor %}
+      {%- endfor -%}
 
       {%- assign more_authors = author_array_size | minus: author_array_limit -%}
-      {% if more_authors > 0 %}
-        , and
-        <span class="more-authors" title="click to view {{ more_authors }} more author{% if more_authors > 1 %}s{% endif %}"
+      {%- if more_authors > 0 -%}
+        , and <span class="more-authors" title="click to view {{ more_authors }} more author{% if more_authors > 1 %}s{% endif %}"
           onclick="
             var element = $(this);
             element.attr('title', '');
@@ -101,19 +100,19 @@
     <!-- Periodical and Buttons in One Line -->
     <div class="d-flex align-items-center flex-wrap" style="gap: 0.5rem; margin-top: 0.3rem;">
       <div class="periodical mb-0">
-        {% assign proceedings = 'inproceedings,incollection' | split: ',' %}
-        {% assign thesis = 'thesis,mastersthesis,phdthesis' | split: ',' %}
-        {% if entry.type == 'article' %}
+        {%- assign proceedings = 'inproceedings,incollection' | split: ',' -%}
+        {%- assign thesis = 'thesis,mastersthesis,phdthesis' | split: ',' -%}
+        {%- if entry.type == 'article' -%}
           <em>{{ entry.journal }}</em>
-        {% elsif proceedings contains entry.type %}
+        {%- elsif proceedings contains entry.type -%}
           <em>In {{ entry.booktitle }}</em>
-        {% elsif thesis contains entry.type %}
+        {%- elsif thesis contains entry.type -%}
           <em>{{ entry.school }}</em>
-        {% endif %}
-        {% if entry.location %}, {{ entry.location }}{% endif %}
-        {% if entry.additional_info %}{{ entry.additional_info | markdownify | remove: '<p>' | remove: '</p>' }}{% endif %}
-        {% if entry.year %}, {{ entry.month | capitalize }} {{ entry.year }}{% endif %}
-        {% if entry.note %} &ndash; {{ entry.note }}{% endif %}
+        {%- endif -%}
+        {%- if entry.location %}, {{ entry.location }}{% endif -%}
+        {%- if entry.additional_info %} {{ entry.additional_info | markdownify | remove: '<p>' | remove: '</p>' | strip }}{% endif -%}
+        {%- if entry.year %}, {% if entry.month %}{{ entry.month | capitalize }} {% endif %}{{ entry.year }}{% endif -%}
+        {%- if entry.note %} &ndash; {{ entry.note }}{% endif -%}
       </div>
 
       <div class="links">
@@ -121,18 +120,18 @@
         {%- assign _has_links = false -%}
         {%- if entry.award or entry.arxiv or entry.bibtex_show or entry.html or entry.pdf or entry.supp or entry.video or entry.blog or entry.code or entry.poster or entry.slides or entry.website -%}{%- assign _has_links = true -%}{%- endif -%}
         {%- if _has_links -%}[{%- endif -%}
-        {%- if entry.award -%}{%- unless _first_link -%}, {%- endunless -%}<a class="award btn btn-sm z-depth-0" role="button">{{ entry.award_name | default: 'Awarded' }}</a>{%- assign _first_link = false -%}{%- endif -%}
-        {%- if entry.arxiv -%}{%- unless _first_link -%}, {%- endunless -%}<a href="http://arxiv.org/abs/{{ entry.arxiv }}">arXiv</a>{%- assign _first_link = false -%}{%- endif -%}
-        {%- if entry.bibtex_show -%}{%- unless _first_link -%}, {%- endunless -%}<a class="bibtex btn btn-sm z-depth-0" role="button">Bib</a>{%- assign _first_link = false -%}{%- endif -%}
-        {%- if entry.html -%}{%- unless _first_link -%}, {%- endunless -%}<a href="{{ entry.html contains '://' | ternary: entry.html, entry.html | prepend: '/assets/html/' | relative_url }}">HTML</a>{%- assign _first_link = false -%}{%- endif -%}
-        {%- if entry.pdf -%}{%- unless _first_link -%}, {%- endunless -%}<a href="{{ entry.pdf contains '://' | ternary: entry.pdf, entry.pdf | relative_url }}">pdf</a>{%- assign _first_link = false -%}{%- endif -%}
-        {%- if entry.supp -%}{%- unless _first_link -%}, {%- endunless -%}<a href="{{ entry.supp contains '://' | ternary: entry.supp, entry.supp | prepend: '/assets/pdf/' | relative_url }}">supp</a>{%- assign _first_link = false -%}{%- endif -%}
-        {%- if entry.video -%}{%- unless _first_link -%}, {%- endunless -%}{%- if site.enable_video_embedding -%}<a class="abstract btn btn-sm z-depth-0" role="button">video</a>{%- else -%}<a href="{{ entry.video }}">video</a>{%- endif -%}{%- assign _first_link = false -%}{%- endif -%}
-        {%- if entry.blog -%}{%- unless _first_link -%}, {%- endunless -%}<a href="{{ entry.blog }}">blog</a>{%- assign _first_link = false -%}{%- endif -%}
-        {%- if entry.code -%}{%- unless _first_link -%}, {%- endunless -%}<a href="{{ entry.code }}">code</a>{%- assign _first_link = false -%}{%- endif -%}
-        {%- if entry.poster -%}{%- unless _first_link -%}, {%- endunless -%}<a href="{{ entry.poster contains '://' | ternary: entry.poster, entry.poster | prepend: '/assets/pdf/' | relative_url }}">poster</a>{%- assign _first_link = false -%}{%- endif -%}
-        {%- if entry.slides -%}{%- unless _first_link -%}, {%- endunless -%}<a href="{{ entry.slides contains '://' | ternary: entry.slides, entry.slides | prepend: '/assets/pdf/' | relative_url }}">slides</a>{%- assign _first_link = false -%}{%- endif -%}
-        {%- if entry.website -%}{%- unless _first_link -%}, {%- endunless -%}<a href="{{ entry.website }}">website</a>{%- assign _first_link = false -%}{%- endif -%}
+        {%- if entry.award -%}{%- unless _first_link -%}, {% endunless -%}<a class="award btn btn-sm z-depth-0" role="button">{{ entry.award_name | default: 'Awarded' }}</a>{%- assign _first_link = false -%}{%- endif -%}
+        {%- if entry.arxiv -%}{%- unless _first_link -%}, {% endunless -%}<a href="http://arxiv.org/abs/{{ entry.arxiv }}">arXiv</a>{%- assign _first_link = false -%}{%- endif -%}
+        {%- if entry.bibtex_show -%}{%- unless _first_link -%}, {% endunless -%}<a class="bibtex btn btn-sm z-depth-0" role="button">Bib</a>{%- assign _first_link = false -%}{%- endif -%}
+        {%- if entry.html -%}{%- unless _first_link -%}, {% endunless -%}<a href="{{ entry.html contains '://' | ternary: entry.html, entry.html | prepend: '/assets/html/' | relative_url }}">HTML</a>{%- assign _first_link = false -%}{%- endif -%}
+        {%- if entry.pdf -%}{%- unless _first_link -%}, {% endunless -%}<a href="{{ entry.pdf contains '://' | ternary: entry.pdf, entry.pdf | relative_url }}">pdf</a>{%- assign _first_link = false -%}{%- endif -%}
+        {%- if entry.supp -%}{%- unless _first_link -%}, {% endunless -%}<a href="{{ entry.supp contains '://' | ternary: entry.supp, entry.supp | prepend: '/assets/pdf/' | relative_url }}">supp</a>{%- assign _first_link = false -%}{%- endif -%}
+        {%- if entry.video -%}{%- unless _first_link -%}, {% endunless -%}{%- if site.enable_video_embedding -%}<a class="abstract btn btn-sm z-depth-0" role="button">video</a>{%- else -%}<a href="{{ entry.video }}">video</a>{%- endif -%}{%- assign _first_link = false -%}{%- endif -%}
+        {%- if entry.blog -%}{%- unless _first_link -%}, {% endunless -%}<a href="{{ entry.blog }}">blog</a>{%- assign _first_link = false -%}{%- endif -%}
+        {%- if entry.code -%}{%- unless _first_link -%}, {% endunless -%}<a href="{{ entry.code }}">code</a>{%- assign _first_link = false -%}{%- endif -%}
+        {%- if entry.poster -%}{%- unless _first_link -%}, {% endunless -%}<a href="{{ entry.poster contains '://' | ternary: entry.poster, entry.poster | prepend: '/assets/pdf/' | relative_url }}">poster</a>{%- assign _first_link = false -%}{%- endif -%}
+        {%- if entry.slides -%}{%- unless _first_link -%}, {% endunless -%}<a href="{{ entry.slides contains '://' | ternary: entry.slides, entry.slides | prepend: '/assets/pdf/' | relative_url }}">slides</a>{%- assign _first_link = false -%}{%- endif -%}
+        {%- if entry.website -%}{%- unless _first_link -%}, {% endunless -%}<a href="{{ entry.website }}">website</a>{%- assign _first_link = false -%}{%- endif -%}
         {%- if _has_links -%}]{%- endif -%}
       </div>
     </div>
