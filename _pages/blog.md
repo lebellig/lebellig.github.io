@@ -150,8 +150,8 @@ pagination:
 
 </div>
 
-  <div class="col-sm-5 text-center ps-3">
-    <img class="card-img" src="{{ post.thumbnail | relative_url }}" style="object-fit: contain; width: 100%; max-height: 320px; transform: scale(1.25); transform-origin: center center; background: var(--global-bg-color);" alt="image">
+  <div class="col-sm-5 text-center ps-3" style="overflow: hidden;">
+    <img class="card-img" src="{{ post.thumbnail | relative_url }}" style="object-fit: contain; width: 100%; max-height: 300px; transform: scale(1.35); transform-origin: center center; background: var(--global-bg-color);" alt="image">
   </div>
 </div>
 {% endif %}
