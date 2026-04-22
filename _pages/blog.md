@@ -99,8 +99,8 @@ pagination:
 
 {% if post.thumbnail %}
 
-<div class="row align-items-center">
-          <div class="col-sm-6">
+<div class="row align-items-center g-0">
+          <div class="col-sm-7">
 {% endif %}
         <h3>
         {% if post.redirect == blank %}
@@ -150,8 +150,8 @@ pagination:
 
 </div>
 
-  <div class="col-sm-6 text-center">
-    <img class="card-img" src="{{ post.thumbnail | relative_url }}" style="object-fit: contain; width: 100%; max-height: 280px; background: var(--global-bg-color);" alt="image">
+  <div class="col-sm-5 text-center ps-3">
+    <img class="card-img" src="{{ post.thumbnail | relative_url }}" style="object-fit: contain; width: 100%; max-height: 320px; transform: scale(1.25); transform-origin: center center; background: var(--global-bg-color);" alt="image">
   </div>
 </div>
 {% endif %}
