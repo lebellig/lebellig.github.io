@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 260" width="400" height="260">
+  <rect width="400" height="260" fill="#f4f4f4"/>
+
+  <!-- Torus outline only — two faint ellipses, no fill -->
+  <ellipse cx="200" cy="145" rx="175" ry="105" fill="none" stroke="#c6c6c6" stroke-width="1"/>
+  <ellipse cx="200" cy="135" rx="62"  ry="40"  fill="none" stroke="#c6c6c6" stroke-width="1"/>
+
+  <!-- Spiral geodesic — pass 1 back (dashed, "behind" torus) -->
+  <path d="M 370 158
+           C 340 110, 270 68, 200 66
+           C 130 64, 60 106, 30 158"
+        stroke="#0f62fe" stroke-width="1.5" fill="none"
+        stroke-dasharray="5 4" opacity="0.3"
+        stroke-linecap="round"/>
+
+  <!-- Spiral geodesic — pass 1 front (solid, over the top) -->
+  <path d="M 30 148
+           C 55 105, 125 62, 200 60
+           C 275 58, 345 105, 370 148
+           C 382 170, 375 198, 355 214
+           C 320 238, 265 245, 200 244
+           C 135 243, 80 236, 48 214
+           C 28 200, 22 178, 30 158"
+        stroke="#0f62fe" stroke-width="2" fill="none"
+        stroke-linecap="round"/>
+
+  <!-- Spiral geodesic — pass 2 front (tighter inner wind) -->
+  <path d="M 30 158
+           C 35 140, 55 118, 90 108
+           C 130 96, 170 92, 200 92
+           C 230 92, 268 98, 300 114
+           C 335 132, 358 152, 362 170"
+        stroke="#0f62fe" stroke-width="1.5" fill="none"
+        stroke-linecap="round" opacity="0.6"/>
+
+  <!-- Spiral geodesic — pass 2 back (dashed) -->
+  <path d="M 362 170
+           C 355 195, 330 218, 290 228
+           C 248 238, 150 238, 108 222
+           C 72 208, 42 185, 30 158"
+        stroke="#0f62fe" stroke-width="1" fill="none"
+        stroke-dasharray="5 4" opacity="0.2"
+        stroke-linecap="round"/>
+
+  <!-- Blue point cloud -->
+  <g fill="#0f62fe" opacity="0.75">
+    <rect x="175" y="56"  width="3" height="3"/>
+    <rect x="184" y="52"  width="3" height="3"/>
+    <rect x="193" y="50"  width="3" height="3"/>
+    <rect x="202" y="52"  width="3" height="3"/>
+    <rect x="211" y="57"  width="3" height="3"/>
+    <rect x="180" y="63"  width="3" height="3"/>
+    <rect x="189" y="60"  width="3" height="3"/>
+    <rect x="198" y="58"  width="3" height="3"/>
+    <rect x="207" y="63"  width="3" height="3"/>
+    <rect x="185" y="70"  width="3" height="3"/>
+    <rect x="194" y="67"  width="3" height="3"/>
+    <rect x="203" y="69"  width="3" height="3"/>
+    <rect x="170" y="67"  width="2" height="2" opacity="0.5"/>
+    <rect x="216" y="70"  width="2" height="2" opacity="0.45"/>
+    <rect x="178" y="77"  width="2" height="2" opacity="0.4"/>
+    <rect x="212" y="76"  width="2" height="2" opacity="0.4"/>
+  </g>
+
+  <rect x="0.5" y="0.5" width="399" height="259" fill="none" stroke="#e0e0e0" stroke-width="1"/>
+</svg>
