@@ -1,0 +1,28 @@
+{% assign mosaic_posts = site.posts %}
+{% if page.latest_posts.limit %}
+  {% assign mosaic_limit = page.latest_posts.limit %}
+{% else %}
+  {% assign mosaic_limit = site.posts | size %}
+{% endif %}
+
+<div class="posts-mosaic">
+  {% for item in mosaic_posts limit: mosaic_limit %}
+    <a class="mosaic-card" href="{% if item.redirect == blank %}{{ item.url | relative_url }}{% elsif item.redirect contains '://' %}{{ item.redirect }}{% else %}{{ item.redirect | relative_url }}{% endif %}"
+       {% if item.redirect contains '://' %}target="_blank"{% endif %}>
+      <div class="mosaic-thumb">
+        {% if item.thumbnail %}
+          <img src="{{ item.thumbnail | relative_url }}" alt="{{ item.title }}">
+        {% else %}
+          <div class="mosaic-thumb-placeholder"></div>
+        {% endif %}
+      </div>
+      <div class="mosaic-body">
+        <div class="mosaic-date">{{ item.date | date: '%b %Y' }}</div>
+        <div class="mosaic-title">{{ item.title }}</div>
+        {% if item.description %}
+          <div class="mosaic-desc">{{ item.description }}</div>
+        {% endif %}
+      </div>
+    </a>
+  {% endfor %}
+</div>

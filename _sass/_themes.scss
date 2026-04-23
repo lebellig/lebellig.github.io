@@ -5,24 +5,24 @@
 @use "sass:color";
 
 :root {
-  --global-bg-color: #{$white-color};
+  --global-bg-color: #ffffff;
   --global-code-bg-color: #{$code-bg-color-light};
-  --global-text-color: #{$black-color};
-  --global-text-color-light: #{$grey-color};
-  --global-theme-color: #{$blue-color};
-  --global-hover-color: #{$blue-color};
+  --global-text-color: #{$grey-color-dark};        // Carbon Gray 100
+  --global-text-color-light: #6f6f6f;              // Carbon Gray 60
+  --global-theme-color: #{$blue-color};            // Carbon Blue 60
+  --global-hover-color: #{$blue-color-dark};       // Carbon Blue 70
   --global-hover-text-color: #{$white-color};
-  --global-footer-bg-color: #{$grey-color-dark};
-  --global-footer-text-color: #{$grey-color-light};
-  --global-footer-link-color: #{$white-color};
+  --global-footer-bg-color: #{$grey-color-dark};   // Carbon Gray 100
+  --global-footer-text-color: #c6c6c6;             // Carbon Gray 30
+  --global-footer-link-color: #e0e0e0;             // Carbon Gray 20
   --global-distill-app-color: #{$grey-color};
-  --global-divider-color: rgba(0, 0, 0, 0.1);
-  --global-card-bg-color: #{$white-color};
+  --global-divider-color: #e0e0e0;                 // Carbon Gray 20
+  --global-card-bg-color: #f4f4f4;                 // Carbon Gray 10
   --global-highlight-color: #{$red-color-dark};
-  --global-back-to-top-bg-color: rgba(0, 0, 0, 0.85); // or any fallback color
+  --global-back-to-top-bg-color: #{$grey-color-dark};
   --global-back-to-top-text-color: #{$white-color};
   --global-newsletter-bg-color: #{$white-color};
-  --global-newsletter-text-color: #{$black-color};
+  --global-newsletter-text-color: #{$grey-color-dark};
 
   --global-tip-block: #42b983;
   --global-tip-block-bg: #e2f5ec;
@@ -71,23 +71,23 @@
 }
 
 html[data-theme="dark"] {
-  --global-bg-color: #{$grey-color-dark};
+  --global-bg-color: #{$grey-color-dark};          // Carbon Gray 100
   --global-code-bg-color: #{$code-bg-color-dark};
-  --global-text-color: #{$grey-color-light};
-  --global-text-color-light: #{$grey-color};
-  --global-theme-color: #{$cyan-color};
-  --global-hover-color: #{$cyan-color};
-  --global-hover-text-color: #{$white-color};
-  --global-footer-bg-color: #{$grey-color-light};
-  --global-footer-text-color: #{$grey-color-dark};
-  --global-footer-link-color: #{$black-color};
-  --global-distill-app-color: #{$grey-color-light};
-  --global-divider-color: #424246;
-  --global-card-bg-color: #{$grey-900};
-  --global-back-to-top-bg-color: rgba(0, 0, 0, 0.85); // or any fallback color
-  --global-back-to-top-text-color: #{$black-color};
-  --global-newsletter-bg-color: #{$grey-color-light};
-  --global-newsletter-text-color: #{$grey-color-dark};
+  --global-text-color: #f4f4f4;                    // Carbon Gray 10
+  --global-text-color-light: #a8a8a8;              // Carbon Gray 40
+  --global-theme-color: #{$blue-color-light};      // Carbon Blue 40
+  --global-hover-color: #74b1ff;                   // Carbon Blue 30
+  --global-hover-text-color: #{$grey-color-dark};
+  --global-footer-bg-color: #262626;               // Carbon Gray 90
+  --global-footer-text-color: #c6c6c6;             // Carbon Gray 30
+  --global-footer-link-color: #e0e0e0;
+  --global-distill-app-color: #a8a8a8;
+  --global-divider-color: #393939;                 // Carbon Gray 80
+  --global-card-bg-color: #{$grey-900};            // Carbon Gray 90
+  --global-back-to-top-bg-color: #f4f4f4;
+  --global-back-to-top-text-color: #{$grey-color-dark};
+  --global-newsletter-bg-color: #262626;
+  --global-newsletter-text-color: #f4f4f4;
 
   --global-tip-block: #42b983;
   --global-tip-block-bg: #e2f5ec;

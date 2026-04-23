@@ -5,37 +5,41 @@
 
 @use "sass:color";
 
-// Colors
-$red-color: #ff3636 !default;
-$red-color-dark: #b71c1c !default;
-$orange-color: #f29105 !default;
-$blue-color: #0076df !default;
-$blue-color-dark: #00369f !default;
-$cyan-color: #2698ba !default;
-$light-cyan-color: color.adjust($cyan-color, $lightness: 25%);
-$green-color: #00ab37 !default;
-$green-color-lime: #b7d12a !default;
-$green-color-dark: #009f06 !default;
-$green-color-light: #ddffdd !default;
-$green-color-bright: #11d68b !default;
-$purple-color: #b509ac !default;
-$light-purple-color: color.adjust($purple-color, $lightness: 25%);
-$pink-color: #f92080 !default;
-$pink-color-light: #ffdddd !default;
-$yellow-color: #efcc00 !default;
+// Carbon Design System color palette
+// Blues
+$blue-color: #0f62fe !default;          // Carbon Blue 60 — primary interactive
+$blue-color-dark: #0043ce !default;     // Carbon Blue 70
+$blue-color-light: #4589ff !default;    // Carbon Blue 40 — dark mode primary
 
-$grey-color: #828282 !default;
-$grey-color-light: color.adjust($grey-color, $lightness: 40%);
-$grey-color-dark: #1c1c1d;
-$grey-900: #212529;
+// Semantic colors
+$red-color: #da1e28 !default;           // Carbon Red 60
+$red-color-dark: #750e13 !default;      // Carbon Red 80
+$orange-color: #f1620a !default;        // Carbon Orange 60
+$cyan-color: #4589ff !default;          // Used in dark mode
+$light-cyan-color: #82cfff !default;    // Carbon Cyan 40
+$green-color: #198038 !default;         // Carbon Green 60
+$green-color-lime: #a4cf0c !default;
+$green-color-dark: #0e6027 !default;
+$green-color-light: #defbe6 !default;
+$green-color-bright: #42be65 !default;
+$purple-color: #8a3ffc !default;        // Carbon Purple 60
+$light-purple-color: #be95ff !default;
+$pink-color: #ee5396 !default;
+$pink-color-light: #ffd6e8 !default;
+$yellow-color: #f1c21b !default;        // Carbon Yellow 30
+
+// Carbon gray scale
+$grey-color: #8d8d8d !default;          // Carbon Gray 50
+$grey-color-light: #e0e0e0 !default;    // Carbon Gray 20
+$grey-color-dark: #161616 !default;     // Carbon Gray 100
+$grey-900: #262626 !default;            // Carbon Gray 90
 
 $white-color: #ffffff !default;
-$black-color: #000000 !default;
+$black-color: #161616 !default;         // Carbon uses Gray 100, not pure black
 
 // Theme colors
-
-$code-bg-color-light: rgba($purple-color, 0.05);
-$code-bg-color-dark: #2c3237 !default;
+$code-bg-color-light: #f4f4f4 !default; // Carbon Gray 10
+$code-bg-color-dark: #393939 !default;  // Carbon Gray 80
 
 // Font awesome location
 $fa-font-path: "../webfonts";

@@ -1,0 +1,425 @@
+/*******************************************************************************
+ * Custom IBM Carbon / Dieter Rams inspired overrides.
+ * Imported last so these take precedence over theme defaults.
+ ******************************************************************************/
+
+// --------------------------------------------------------------------------
+// Raster — 8px base spacing tokens (Dieter Rams grid principle)
+// --------------------------------------------------------------------------
+
+$spacing-02: 4px;
+$spacing-03: 8px;
+$spacing-04: 16px;
+$spacing-05: 24px;
+$spacing-06: 32px;
+$spacing-07: 40px;
+$spacing-08: 48px;
+$spacing-09: 64px;
+$spacing-10: 80px;
+$spacing-11: 96px;
+
+// --------------------------------------------------------------------------
+// Global link style — understated, Carbon-style
+// --------------------------------------------------------------------------
+
+a,
+table.table a {
+  color: var(--global-theme-color);
+  text-decoration: none;
+  transition: color 70ms ease;
+
+  &:hover {
+    color: var(--global-hover-color);
+    text-decoration: underline;
+  }
+}
+
+// --------------------------------------------------------------------------
+// Section label — IBM Research "eyebrow" style
+// Used above major sections (News, Selected Publications, etc.)
+// --------------------------------------------------------------------------
+
+.section-label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.32px;
+  text-transform: uppercase;
+  color: var(--global-text-color-light);
+  margin-bottom: $spacing-04;
+  padding-bottom: $spacing-02;
+  border-bottom: 1px solid var(--global-theme-color);
+}
+
+// --------------------------------------------------------------------------
+// About / profile section
+// --------------------------------------------------------------------------
+
+.profile {
+  img {
+    border-radius: 0;         // IBM Research uses sharp profile images
+    filter: grayscale(8%);    // Subtle desaturation for editorial feel
+  }
+
+  // Circular variant override
+  .rounded-circle {
+    border-radius: 50% !important;
+  }
+}
+
+.more-info {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.8125rem;
+  color: var(--global-text-color-light);
+  letter-spacing: 0;
+  margin-top: $spacing-04;
+}
+
+// --------------------------------------------------------------------------
+// News / announcements — clean timeline rows
+// --------------------------------------------------------------------------
+
+.announcements {
+  margin-bottom: $spacing-07;
+}
+
+// news.liquid uses .news-item class on each <td>
+.news .news-item {
+  font-size: 1rem;
+  line-height: 1.6;
+  padding: 2px 0;
+  color: var(--global-text-color);
+
+  a {
+    color: var(--global-theme-color);
+    &:hover { text-decoration: underline; }
+  }
+}
+
+// --------------------------------------------------------------------------
+// IBM Research-style section headings on about page
+// --------------------------------------------------------------------------
+
+.about-section-title {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.32px;
+  text-transform: uppercase;
+  color: var(--global-text-color-light);
+  border-bottom: 1px solid var(--global-divider-color);
+  padding-bottom: $spacing-03;
+  margin-top: $spacing-08;
+  margin-bottom: $spacing-05;
+}
+
+// --------------------------------------------------------------------------
+// Pagination — Carbon style, sharp corners
+// --------------------------------------------------------------------------
+
+.pagination {
+  .page-item {
+    .page-link {
+      border-radius: 0 !important;
+      font-size: 0.875rem;
+      color: var(--global-text-color);
+      border-color: var(--global-divider-color);
+      background-color: var(--global-bg-color);
+      padding: 8px 16px;
+      transition: background-color 70ms ease, color 70ms ease;
+
+      &:hover {
+        background-color: var(--global-divider-color);
+        color: var(--global-text-color);
+      }
+    }
+
+    &.active .page-link {
+      background-color: var(--global-theme-color);
+      border-color: var(--global-theme-color);
+      color: white;
+
+      &:hover {
+        background-color: var(--global-hover-color);
+      }
+    }
+  }
+}
+
+// --------------------------------------------------------------------------
+// Table — editorial style with grid lines
+// --------------------------------------------------------------------------
+
+table {
+  td,
+  th {
+    font-size: 0.875rem;
+    padding: 8px 16px 8px 0;
+    border-bottom: 1px solid var(--global-divider-color);
+  }
+
+  th {
+    font-weight: 600;
+    font-size: 0.75rem;
+    letter-spacing: 0.32px;
+    color: var(--global-text-color-light);
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--global-text-color-light);
+  }
+}
+
+// --------------------------------------------------------------------------
+// Progress bar — Carbon teal accent line
+// --------------------------------------------------------------------------
+
+progress {
+  top: 48px;   // Aligns to Carbon 48px header height
+}
+
+.progress-container {
+  top: 48px;
+}
+
+// --------------------------------------------------------------------------
+// Back-to-top button — Carbon ghost button feel
+// --------------------------------------------------------------------------
+
+#back-to-top {
+  border-radius: 0 !important;
+  border: 1px solid var(--global-divider-color);
+  font-size: 0.875rem;
+}
+
+// --------------------------------------------------------------------------
+// Tag / category pills — Carbon tag component
+// --------------------------------------------------------------------------
+
+.tag-category-list {
+  border-bottom: 1px solid var(--global-divider-color);
+  text-align: left;
+  padding: $spacing-05 0;
+
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $spacing-03;
+    padding: 0;
+    justify-content: flex-start;
+
+    p,
+    li {
+      list-style: none;
+      display: inline-flex;
+      padding: 4px 12px;
+      background-color: var(--global-card-bg-color);
+      border: 1px solid var(--global-divider-color);
+      color: var(--global-text-color-light);
+      font-size: 0.75rem;
+      letter-spacing: 0.32px;
+      transition: background-color 70ms ease;
+
+      &:hover {
+        background-color: var(--global-divider-color);
+      }
+    }
+  }
+}
+
+// --------------------------------------------------------------------------
+// Post body — editorial reading experience
+// --------------------------------------------------------------------------
+
+.post {
+  #markdown-content {
+    p {
+      text-align: left;     // IBM Research doesn't use justified text
+      max-width: 68ch;      // Optimal reading line length
+      line-height: 1.75;
+    }
+  }
+
+  .post-meta {
+    font-size: 0.75rem;
+    letter-spacing: 0.32px;
+    text-transform: uppercase;
+    color: var(--global-text-color-light);
+  }
+
+  .post-tags a {
+    font-size: 0.75rem;
+    letter-spacing: 0.32px;
+    text-transform: uppercase;
+    color: var(--global-text-color-light);
+    text-decoration: none;
+
+    &:hover {
+      color: var(--global-theme-color);
+    }
+  }
+}
+
+// --------------------------------------------------------------------------
+// Featured posts — Carbon productive card
+// --------------------------------------------------------------------------
+
+.featured-posts {
+  a {
+    text-decoration: none;
+    color: var(--global-text-color);
+
+    .card {
+      transition: background-color 70ms ease;
+
+      &:hover {
+        background-color: var(--global-divider-color);
+      }
+    }
+
+    .card-title {
+      font-size: 0.875rem;
+      font-weight: 600;
+    }
+
+    .card-text {
+      font-size: 0.875rem;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+
+  .post-meta {
+    font-size: 0.75rem;
+    letter-spacing: 0.32px;
+    color: var(--global-text-color-light);
+    padding-top: $spacing-03;
+  }
+}
+
+// --------------------------------------------------------------------------
+// CV section — structured grid layout
+// --------------------------------------------------------------------------
+
+.cv {
+  margin-bottom: $spacing-08;
+
+  .card {
+    border-radius: 0;
+    border: 1px solid var(--global-divider-color);
+
+    .list-group-item {
+      background-color: inherit;
+      border-color: var(--global-divider-color);
+      border-radius: 0;
+      font-size: 0.875rem;
+      padding: $spacing-04;
+
+      .badge {
+        border-radius: 0 !important;
+        font-size: 0.75rem;
+        font-weight: 600;
+        letter-spacing: 0.32px;
+        text-transform: uppercase;
+        color: white !important;
+        background-color: var(--global-theme-color) !important;
+      }
+    }
+  }
+}
+
+// --------------------------------------------------------------------------
+// Posts mosaic — 2-column card grid for homepage
+// --------------------------------------------------------------------------
+
+.posts-mosaic {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: $spacing-05;
+  margin-top: $spacing-05;
+
+  @media (max-width: 576px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.mosaic-card {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: var(--global-text-color);
+  border: 1px solid var(--global-divider-color);
+  background-color: var(--global-bg-color);
+  transition: background-color 70ms ease, border-color 70ms ease;
+
+  &:hover {
+    background-color: var(--global-card-bg-color);
+    border-color: var(--global-theme-color);
+    text-decoration: none;
+    color: var(--global-text-color);
+  }
+
+  .mosaic-thumb {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background-color: var(--global-card-bg-color);
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: grayscale(8%);
+    }
+  }
+
+  .mosaic-thumb-placeholder {
+    width: 100%;
+    height: 100%;
+    background-color: var(--global-divider-color);
+  }
+
+  .mosaic-body {
+    padding: $spacing-04;
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-02;
+    flex: 1;
+  }
+
+  .mosaic-date {
+    font-size: 0.6875rem;
+    letter-spacing: 0.32px;
+    text-transform: uppercase;
+    color: var(--global-text-color-light);
+    font-family: "IBM Plex Mono", monospace;
+  }
+
+  .mosaic-title {
+    font-size: 0.875rem;
+    font-weight: 600;
+    line-height: 1.35;
+    color: var(--global-text-color);
+  }
+
+  .mosaic-desc {
+    font-size: 0.8125rem;
+    color: var(--global-text-color-light);
+    line-height: 1.5;
+    // clamp to 3 lines
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+// --------------------------------------------------------------------------
+// Search modal — Carbon modal style
+// --------------------------------------------------------------------------
+
+ninja-keys {
+  --ninja-accent-color: var(--global-theme-color);
+  --ninja-icon-size: 0px;
+  --ninja-modal-background: var(--global-bg-color);
+  --ninja-z-index: 1031;
+}

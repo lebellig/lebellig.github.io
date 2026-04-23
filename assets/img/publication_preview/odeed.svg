@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 260" width="400" height="260">
+  <rect width="400" height="260" fill="#f4f4f4"/>
+
+  <!-- Baseline axis -->
+  <line x1="40" y1="200" x2="360" y2="200" stroke="#c6c6c6" stroke-width="1.5"/>
+
+  <!-- In-distribution Gaussian curve (filled) -->
+  <path d="M 40 200
+           C 60 200, 80 198, 100 190
+           C 120 178, 135 150, 150 120
+           C 160 100, 170 82, 180 72
+           C 185 67, 190 64, 195 63
+           C 200 62, 205 62, 210 63
+           C 215 64, 220 67, 230 80
+           C 240 95, 255 120, 265 145
+           C 278 175, 295 192, 315 198
+           C 335 200, 355 200, 360 200 Z"
+        fill="#ddeeff" stroke="#4589ff" stroke-width="1.5"/>
+
+  <!-- Gaussian peak marker -->
+  <line x1="200" y1="62" x2="200" y2="200" stroke="#0f62fe" stroke-width="1" stroke-dasharray="4 3"/>
+
+  <!-- In-distribution sample dots -->
+  <circle cx="155" cy="200" r="4" fill="#0f62fe"/>
+  <circle cx="175" cy="200" r="4" fill="#0f62fe"/>
+  <circle cx="195" cy="200" r="4" fill="#0f62fe"/>
+  <circle cx="215" cy="200" r="4" fill="#0f62fe"/>
+  <circle cx="235" cy="200" r="4" fill="#0f62fe"/>
+  <circle cx="170" cy="200" r="4" fill="#0f62fe"/>
+  <circle cx="210" cy="200" r="4" fill="#0f62fe"/>
+
+  <!-- OOD sample — far right, different colour -->
+  <circle cx="334" cy="200" r="6" fill="none" stroke="#da1e28" stroke-width="2"/>
+  <circle cx="334" cy="200" r="2.5" fill="#da1e28"/>
+
+  <!-- OOD bracket label -->
+  <line x1="334" y1="186" x2="334" y2="170" stroke="#da1e28" stroke-width="1.5"/>
+  <text x="334" y="162" font-family="IBM Plex Mono, monospace" font-size="9" fill="#da1e28" text-anchor="middle">OOD</text>
+
+  <!-- Diffusion reconstruction error arc -->
+  <path d="M 310 198 Q 322 160 334 198" fill="none" stroke="#da1e28" stroke-width="1.5" stroke-dasharray="4 3"/>
+
+  <!-- Legend -->
+  <rect x="42" y="36" width="10" height="10" fill="#ddeeff" stroke="#4589ff" stroke-width="1"/>
+  <text x="57" y="46" font-family="IBM Plex Mono, monospace" font-size="9" fill="#525252">in-distribution</text>
+  <circle cx="47" cy="62" r="4" fill="none" stroke="#da1e28" stroke-width="1.5"/>
+  <circle cx="47" cy="62" r="1.5" fill="#da1e28"/>
+  <text x="57" y="66" font-family="IBM Plex Mono, monospace" font-size="9" fill="#525252">out-of-distribution</text>
+
+  <text x="200" y="240" font-family="IBM Plex Mono, monospace" font-size="10" fill="#525252" text-anchor="middle" letter-spacing="1">OOD DETECTION</text>
+  <rect x="0.5" y="0.5" width="399" height="259" fill="none" stroke="#e0e0e0" stroke-width="1"/>
+</svg>

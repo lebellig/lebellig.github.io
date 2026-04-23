@@ -2,34 +2,67 @@
  * Styles for the base elements of the theme.
  ******************************************************************************/
 
-// Typography
+// Typography — IBM Carbon type scale + Dieter Rams proportional grid
 
 p, h1, h2, h3, h4, h5, h6, em, div, span, strong {
   color: var(--global-text-color);
   line-height: 1.5;
 }
- 
-/* { */
-/*   color: var(--global-text-color); */
-/*   font-family: "IBM Plex Sans", sans-serif; */
-/*   font-optical-sizing: auto; */
-/*   font-weight: 300; */
-/*   font-style: normal; */
-/*   font-variation-settings: */
-/*     "wdth" 100; */
-/* } */
-/**/
+
 body {
-  font-family: IBM Plex Sans, sans-serif;
-  padding-bottom: 50px;
-  font-size: 100%;
-  line-height: 1.3em;
-  letter-spacing: -0.15pt;
+  font-family: "IBM Plex Sans", sans-serif;
+  padding-bottom: 64px;
+  font-size: 1rem;          // 16px base — Carbon Body 01
+  line-height: 1.625;       // Carbon Body 01 line-height
+  letter-spacing: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
+// Carbon type scale — productive heading set
+h1 {
+  font-size: 2rem;          // Carbon Heading 05
+  font-weight: 300;
+  line-height: 1.25;
+  letter-spacing: 0;
+}
 
+h2 {
+  font-size: 1.5rem;        // Carbon Heading 04
+  font-weight: 400;
+  line-height: 1.3;
+  letter-spacing: 0;
+}
 
-hr { background: #80808083; margin: 10px 0 10px 0; padding: 1px 0 0 0; max-width: 900px; }
+h3 {
+  font-size: 1.25rem;       // Carbon Heading 03
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: 0;
+}
+
+h4 {
+  font-size: 1rem;          // Carbon Heading 02
+  font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: 0.16px;
+}
+
+h5, h6 {
+  font-size: 0.875rem;      // Carbon Heading 01
+  font-weight: 600;
+  line-height: 1.43;
+  letter-spacing: 0.16px;
+}
+
+// Raster grid divider — Carbon blue accent rule
+hr {
+  border: none;
+  border-top: 1px solid var(--global-theme-color);
+  margin: 32px 0;
+  padding: 0;
+  max-width: 100%;
+}
 
 /* hr { */
 /*   border-top: 1px solid var(--global-divider-color); */
@@ -69,11 +102,11 @@ table.table a {
 }
 
 blockquote {
-  background: var(--global-bg-color);
-  border-left: 5px solid var(--global-theme-color);
-  margin: 1.5em 0;
-  padding: 1em;
-  font-size: 1.2rem;
+  background: var(--global-card-bg-color);
+  border-left: 4px solid var(--global-theme-color);
+  margin: 32px 0;
+  padding: 16px 24px;
+  font-size: 1rem;
 
   p {
     margin-bottom: 0;
@@ -176,22 +209,25 @@ ul.task-list input[type="checkbox"] {
   text-align: center;
 }
 
-// Card
-
+// Card — Carbon tile
 .card {
   background-color: var(--global-card-bg-color);
+  border: 1px solid var(--global-divider-color);
+  border-radius: 0;         // Carbon uses sharp corners
 
   .card-img {
     width: 100%;
-    padding-top: 1.25rem;
+    padding-top: 0;
   }
 
   .card-title {
     color: var(--global-text-color);
+    font-size: 1rem;
+    font-weight: 600;
   }
 
   .card-body {
-    padding: 1.25rem 1.25rem 1.25rem 1.25rem;
+    padding: 16px;
   }
 }
 
@@ -253,13 +289,16 @@ ul.task-list input[type="checkbox"] {
   }
 }
 
-// Navbar customization
+// Navbar — IBM Carbon shell header style
 
 .navbar {
   box-shadow: none;
   border-bottom: 1px solid var(--global-divider-color);
   background-color: var(--global-bg-color);
-  opacity: 0.95;
+  opacity: 1;
+  min-height: 48px;         // Carbon shell header height
+  padding-top: 0;
+  padding-bottom: 0;
 }
 
 .navbar .dropdown-menu {
@@ -297,23 +336,35 @@ ul.task-list input[type="checkbox"] {
 
   .navbar-brand {
     color: var(--global-text-color);
+    font-size: 0.875rem;    // Carbon Body 02
+    font-weight: 600;
+    letter-spacing: 0.16px;
+    text-transform: none;
   }
 
   .navbar-nav .nav-item .nav-link {
-    color: var(--global-text-color);
+    color: var(--global-text-color-light);
+    font-size: 0.875rem;    // Carbon Body 02
+    font-weight: 400;
+    letter-spacing: 0.16px;
+    padding-top: 0;
+    padding-bottom: 0;
+    line-height: 48px;      // Full-height tap target
+    transition: color 70ms ease, border-bottom-color 70ms ease;
 
     &:hover {
-      color: var(--global-hover-color);
+      color: var(--global-text-color);
     }
   }
 
   .navbar-nav .nav-item.active > .nav-link {
     background-color: inherit;
-    font-weight: bolder;
-    color: var(--global-theme-color);
+    font-weight: 600;
+    color: var(--global-text-color);
+    border-bottom: 2px solid var(--global-theme-color);
 
     &:hover {
-      color: var(--global-hover-color);
+      color: var(--global-text-color);
     }
   }
 
@@ -483,33 +534,36 @@ ul.task-list input[type="checkbox"] {
   }
 }
 
-// Footer
+// Footer — Carbon shell footer
 footer.fixed-bottom {
   background-color: var(--global-footer-bg-color);
   font-size: 0.75rem;
+  border-top: 1px solid #393939;
 
   .container {
     color: var(--global-footer-text-color);
-    padding-top: 9px;
-    padding-bottom: 8px;
+    padding-top: 12px;
+    padding-bottom: 12px;
     text-align: center;
+    font-size: 0.75rem;
+    letter-spacing: 0.32px;
   }
 
   a {
     color: var(--global-footer-link-color);
+    text-decoration: none;
 
     &:hover {
       color: var(--global-theme-color);
-      text-decoration: none;
     }
   }
 }
 
 footer.sticky-bottom {
   border-top: 1px solid var(--global-divider-color);
-  padding-top: 40px;
-  padding-bottom: 40px;
-  font-size: 0.9rem;
+  padding-top: 48px;
+  padding-bottom: 48px;
+  font-size: 0.875rem;
 
   .container {
     text-align: center;
@@ -556,17 +610,20 @@ footer.sticky-bottom {
   }
 }
 
-// Blog
+// Blog — IBM editorial headers
 
 .header-bar {
   border-bottom: 1px solid var(--global-divider-color);
-  text-align: center;
-  padding-top: 2rem;
-  padding-bottom: 3rem;
+  text-align: left;
+  padding-top: 48px;
+  padding-bottom: 48px;
 
   h1 {
-    color: var(--global-theme-color);
-    font-size: 5rem;
+    color: var(--global-text-color);
+    font-size: 2.625rem;    // Carbon Display 03
+    font-weight: 300;
+    line-height: 1.19;
+    letter-spacing: 0;
   }
 }
 
@@ -597,24 +654,30 @@ footer.sticky-bottom {
 
 .post-list {
   margin: 0;
-  margin-bottom: 40px;
+  margin-bottom: 48px;
   padding: 0;
 
   li {
     border-bottom: 1px solid var(--global-divider-color);
     list-style: none;
-    padding-top: 2rem;
-    padding-bottom: 2rem;
+    padding-top: 24px;
+    padding-bottom: 24px;
+
+    &:first-child {
+      border-top: 1px solid var(--global-divider-color);
+    }
 
     .post-meta {
       color: var(--global-text-color-light);
-      font-size: 0.875rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.32px;
       margin-bottom: 0;
     }
 
     .post-tags {
       color: var(--global-text-color-light);
-      font-size: 0.875rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.32px;
       padding-top: 0.25rem;
       padding-bottom: 0;
     }
@@ -622,6 +685,7 @@ footer.sticky-bottom {
     a {
       color: var(--global-text-color);
       text-decoration: none;
+      font-weight: 400;
 
       &:hover {
         color: var(--global-theme-color);
@@ -704,17 +768,22 @@ footer.sticky-bottom {
   }
 }
 
-// Publications
+// Publications — IBM Research editorial style
 
 .publications {
   margin-top: 2rem;
 
   h1 {
-    color: var(--global-theme-color);
-    font-size: 2rem;
-    text-align: center;
-    margin-top: 1em;
-    margin-bottom: 1em;
+    color: var(--global-text-color);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.32px;
+    text-transform: uppercase;
+    text-align: left;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--global-theme-color);
   }
 
   h2 {
@@ -726,11 +795,15 @@ footer.sticky-bottom {
   }
 
   h2.bibliography {
-    color: var(--global-divider-color);
+    color: var(--global-text-color-light);
     border-top: 1px solid var(--global-divider-color);
     padding-top: 1rem;
     margin-top: 2rem;
     text-align: right;
+    font-size: 0.75rem;
+    font-weight: 400;
+    letter-spacing: 0.32px;
+    text-transform: uppercase;
   }
 
   ol.bibliography {
@@ -739,58 +812,120 @@ footer.sticky-bottom {
     margin-top: 0;
 
     li {
-      margin-bottom: 1rem;
+      margin-bottom: 0;
+      padding: 0;
+      border-bottom: 1px solid var(--global-divider-color);
 
-      .preview {
+      &:first-child {
+        border-top: 1px solid var(--global-divider-color);
       }
 
-      .abbr {
-        margin-bottom: 0.5rem;
-
-        abbr {
-          display: inline-block;
-          background-color: var(--global-theme-color);
-          margin-bottom: 0.5rem;
-
-          a {
-            color: white;
-
-            &:hover {
-              text-decoration: none;
-            }
-          }
-        }
-
-        .award {
-          color: var(--global-theme-color) !important;
-          border: 1px solid var(--global-theme-color);
-        }
+      &:last-child {
+        border-bottom: none;
       }
+    }
+  }
 
-      .title {
-        font-weight: bolder;
+  // Flex entry: thumbnail left, content right — no Bootstrap grid = no padding offsets
+  .pub-entry {
+    display: flex;
+    align-items: flex-start;
+    gap: 24px;
+    padding: 28px 0;
+  }
+
+  .pub-thumb {
+    flex: 0 0 140px;
+    width: 140px;
+
+    .pub-thumb-img,
+    img {
+      width: 140px;
+      height: 94px;
+      object-fit: cover;
+      display: block;
+      border: 1px solid var(--global-divider-color);
+    }
+  }
+
+  .pub-content {
+    flex: 1 1 0;
+    min-width: 0;
+    padding: 0;
+
+    .pub-year {
+      float: right;
+      font-size: 0.875rem;
+      font-weight: 400;
+      letter-spacing: 0.16px;
+      color: var(--global-text-color-light);
+      line-height: 1.5;
+      padding-left: 16px;
+    }
+
+    .abbr abbr {
+      display: inline-block;
+      background-color: var(--global-theme-color);
+      border-radius: 0;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.32px;
+      padding: 2px 8px;
+      color: white;
+
+      a {
+        color: white;
+        &:hover { text-decoration: none; }
       }
+    }
+
+    .award {
+      color: var(--global-theme-color) !important;
+      border: 1px solid var(--global-theme-color);
+    }
+
+    .title {
+      font-weight: 600;
+      font-size: 1.125rem;
+      line-height: 1.4;
+      color: var(--global-text-color);
+      margin-bottom: 6px;
+    }
+
+    // Authors + venue separator + venue — all on one line, wrapping
+    .author-venue {
+      font-size: 0.9375rem;
+      color: var(--global-text-color-light);
+      margin-bottom: 10px;
+      line-height: 1.5;
 
       .author {
-        a {
-          border-bottom: 1px dashed var(--global-theme-color);
+        display: inline;
+        font-size: inherit;
+        color: var(--global-text-color-light);
 
+        a {
+          color: var(--global-text-color-light);
+          border-bottom: 1px dashed var(--global-text-color-light);
           &:hover {
+            color: var(--global-theme-color);
+            border-bottom-color: var(--global-theme-color);
             border-bottom-style: solid;
             text-decoration: none;
           }
         }
 
         > em {
-          border-bottom: 1px solid;
+          color: var(--global-text-color);
+          border-bottom: 1px solid var(--global-text-color);
           font-style: normal;
+          font-weight: 500;
         }
 
         > span.more-authors {
           color: var(--global-text-color-light);
           border-bottom: 1px dashed var(--global-text-color-light);
           cursor: pointer;
-
           &:hover {
             color: var(--global-text-color);
             border-bottom: 1px dashed var(--global-text-color);
@@ -798,87 +933,86 @@ footer.sticky-bottom {
         }
       }
 
-      .links {
-        a.btn {
-          color: var(--global-text-color);
-          border: 1px solid var(--global-text-color);
-          padding-left: 1rem;
-          padding-right: 1rem;
-          padding-top: 0.25rem;
-          padding-bottom: 0.25rem;
-          margin-left: 0;
-
-          &:hover {
-            color: var(--global-theme-color);
-            border-color: var(--global-theme-color);
-          }
-        }
-        a.award.btn {
-          border-color: var(--global-highlight-color);
-        }
+      .venue-sep {
+        color: var(--global-text-color-light);
+        opacity: 0.5;
       }
 
-      .badges {
-        padding-bottom: 0.5rem;
-        span {
-          display: inline-block;
-          color: $black-color;
-          height: 100%;
-          padding-right: 0.5rem;
-          vertical-align: middle;
-
-          &:hover {
-            text-decoration: underline;
-          }
-        }
-      }
-
-      .hidden {
-        font-size: 0.875rem;
-        max-height: 0px;
-        overflow: hidden;
-        text-align: justify;
-        transition-property: 0.15s ease;
-        -moz-transition: 0.15s ease;
-        -ms-transition: 0.15s ease;
-        -o-transition: 0.15s ease;
-        transition: all 0.15s ease;
-
-        p {
-          line-height: 1.4em;
-          margin: 10px;
-        }
-
-        pre {
-          font-size: 1em;
-          line-height: 1.4em;
-          padding: 10px;
-        }
-      }
-
-      .hidden.open {
-        max-height: 100em;
-        transition-property: 0.15s ease;
-        -moz-transition: 0.15s ease;
-        -ms-transition: 0.15s ease;
-        -o-transition: 0.15s ease;
-        transition: all 0.15s ease;
-      }
-
-      div.abstract.hidden {
-        border: dashed 1px var(--global-bg-color);
-      }
-
-      div.abstract.hidden.open {
-        border-color: var(--global-text-color);
+      .periodical {
+        display: inline;
+        font-style: italic;
+        font-size: inherit;
+        color: var(--global-text-color-light);
       }
     }
-    div.award.hidden {
+
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+
+      a.btn {
+        color: var(--global-theme-color);
+        border: 1px solid var(--global-theme-color);
+        border-radius: 0;
+        padding: 4px 12px;
+        font-size: 0.8125rem;
+        font-weight: 400;
+        letter-spacing: 0.16px;
+        margin: 0;
+        transition: background-color 70ms ease, color 70ms ease;
+
+        &:hover {
+          background-color: var(--global-theme-color);
+          color: white;
+          text-decoration: none;
+        }
+      }
+
+      a.award.btn {
+        border-color: var(--global-highlight-color);
+      }
+    }
+
+    .hidden {
+      font-size: 0.875rem;
+      max-height: 0px;
+      overflow: hidden;
+      text-align: justify;
+      transition: all 0.15s ease;
+
+      p {
+        line-height: 1.4em;
+        margin: 10px;
+      }
+
+      pre {
+        font-size: 1em;
+        line-height: 1.4em;
+        padding: 10px;
+      }
+    }
+
+    .hidden.open {
+      max-height: 100em;
+      transition: all 0.15s ease;
+    }
+
+    div.abstract.hidden {
       border: dashed 1px var(--global-bg-color);
     }
-    div.award.hidden.open {
-      border-color: var(--global-highlight-color);
+
+    div.abstract.hidden.open {
+      border-color: var(--global-text-color);
     }
+  }
+
+  div.award.hidden {
+    border: dashed 1px var(--global-bg-color);
+  }
+
+  div.award.hidden.open {
+    border-color: var(--global-highlight-color);
   }
 }
 
@@ -888,10 +1022,13 @@ figure.highlight {
 }
 
 pre {
-  color: var(--global-theme-color);
+  color: var(--global-text-color);
   background-color: var(--global-code-bg-color);
-  border-radius: 6px;
-  padding: 6px 12px;
+  border-radius: 0;
+  padding: 16px;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.875rem;
+  line-height: 1.5;
 
   pre,
   code {
@@ -899,14 +1036,17 @@ pre {
     border-radius: 0;
     margin-bottom: 0;
     padding: 0;
+    color: inherit;
   }
 }
 
 code {
-  color: var(--global-theme-color);
+  color: var(--global-text-color);
   background-color: var(--global-code-bg-color);
-  border-radius: 3px;
-  padding: 3px 3px;
+  border-radius: 0;
+  padding: 2px 6px;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.875em;
 }
 
 // Transitioning Themes
