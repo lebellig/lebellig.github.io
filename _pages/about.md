@@ -29,7 +29,7 @@ Formerly MSc. SDIA (_Centrale Lille_) and MSc. ATIAM (_IRCAM_, _Sorbonne Univers
 
 __Research Interests__: 
 
-Earth Observation, Flow Matching, Diffusion/Schrödinger bridges, Generative Modeling, Computational Optimal Transport...
+Generative Modeling, Flow Matching, Diffusion/Schrödinger bridges, Computational Optimal Transport, Earth Observation...
 
 
 <strong>Contact: </strong>

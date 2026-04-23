@@ -59,6 +59,7 @@ table.table a {
   img {
     border-radius: 0;         // IBM Research uses sharp profile images
     filter: grayscale(8%);    // Subtle desaturation for editorial feel
+    box-shadow: none !important;
   }
 
   // Circular variant override
@@ -323,6 +324,20 @@ progress {
         background-color: var(--global-theme-color) !important;
       }
     }
+  }
+}
+
+// --------------------------------------------------------------------------
+// About page — section heading links (News / Selected publications / Posts)
+// --------------------------------------------------------------------------
+
+article h2 a {
+  color: inherit;
+  text-decoration: none;
+
+  &:hover {
+    color: inherit;
+    text-decoration: underline;
   }
 }
 
