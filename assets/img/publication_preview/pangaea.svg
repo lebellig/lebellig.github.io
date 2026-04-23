@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 260" width="400" height="260">
-  <rect width="400" height="260" fill="#f4f4f4"/>
+  <rect width="400" height="260" fill="#fafafa"/>
 
   <!-- Grid background — latitude/longitude -->
   <g stroke="#e0e0e0" stroke-width="0.75" fill="none">
@@ -55,6 +55,4 @@
   <rect x="318" y="192" width="12" height="28" fill="#4589ff"/>
   <rect x="336" y="200" width="12" height="20" fill="#6f6f6f"/>
 
-  <text x="200" y="248" font-family="IBM Plex Mono, monospace" font-size="10" fill="#525252" text-anchor="middle" letter-spacing="1">GLOBAL BENCHMARK</text>
-  <rect x="0.5" y="0.5" width="399" height="259" fill="none" stroke="#e0e0e0" stroke-width="1"/>
 </svg>

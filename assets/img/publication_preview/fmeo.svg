@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 260" width="400" height="260">
-  <rect width="400" height="260" fill="#f4f4f4"/>
+  <rect width="400" height="260" fill="#fafafa"/>
 
   <!-- Source domain grid (left) -->
   <g opacity="0.18">
@@ -17,7 +17,6 @@
     <rect x="78" y="160" width="46" height="60" fill="#525252"/>
     <rect x="124" y="160" width="46" height="60" fill="#393939"/>
   </g>
-  <text x="101" y="232" font-family="IBM Plex Mono, monospace" font-size="10" fill="#525252" text-anchor="middle" letter-spacing="1">SOURCE</text>
 
   <!-- Flow arrows in the center -->
   <g stroke="#0f62fe" stroke-width="2.5" fill="none">
@@ -41,8 +40,6 @@
     <rect x="276" y="160" width="46" height="60" fill="#0f62fe"/>
     <rect x="322" y="160" width="46" height="60" fill="#0043ce"/>
   </g>
-  <text x="299" y="232" font-family="IBM Plex Mono, monospace" font-size="10" fill="#0f62fe" text-anchor="middle" letter-spacing="1">TARGET</text>
 
   <!-- Outer border -->
-  <rect x="0.5" y="0.5" width="399" height="259" fill="none" stroke="#e0e0e0" stroke-width="1"/>
 </svg>

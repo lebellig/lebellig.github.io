@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 260" width="400" height="260">
-  <rect width="400" height="260" fill="#f4f4f4"/>
+  <rect width="400" height="260" fill="#fafafa"/>
 
   <!-- Torus outline only — two faint ellipses, no fill -->
   <ellipse cx="200" cy="145" rx="175" ry="105" fill="none" stroke="#c6c6c6" stroke-width="1"/>
@@ -62,5 +62,4 @@
     <rect x="212" y="76"  width="2" height="2" opacity="0.4"/>
   </g>
 
-  <rect x="0.5" y="0.5" width="399" height="259" fill="none" stroke="#e0e0e0" stroke-width="1"/>
 </svg>
