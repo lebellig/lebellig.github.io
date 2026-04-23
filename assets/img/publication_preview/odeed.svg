@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 260" width="400" height="260">
-  <rect width="400" height="260" fill="#f4f4f4"/>
+  <rect width="400" height="260" fill="#fafafa"/>
 
   <!-- Baseline axis -->
   <line x1="40" y1="200" x2="360" y2="200" stroke="#c6c6c6" stroke-width="1.5"/>
@@ -33,20 +33,12 @@
   <circle cx="334" cy="200" r="6" fill="none" stroke="#da1e28" stroke-width="2"/>
   <circle cx="334" cy="200" r="2.5" fill="#da1e28"/>
 
-  <!-- OOD bracket label -->
-  <line x1="334" y1="186" x2="334" y2="170" stroke="#da1e28" stroke-width="1.5"/>
-  <text x="334" y="162" font-family="IBM Plex Mono, monospace" font-size="9" fill="#da1e28" text-anchor="middle">OOD</text>
 
   <!-- Diffusion reconstruction error arc -->
   <path d="M 310 198 Q 322 160 334 198" fill="none" stroke="#da1e28" stroke-width="1.5" stroke-dasharray="4 3"/>
 
   <!-- Legend -->
   <rect x="42" y="36" width="10" height="10" fill="#ddeeff" stroke="#4589ff" stroke-width="1"/>
-  <text x="57" y="46" font-family="IBM Plex Mono, monospace" font-size="9" fill="#525252">in-distribution</text>
   <circle cx="47" cy="62" r="4" fill="none" stroke="#da1e28" stroke-width="1.5"/>
   <circle cx="47" cy="62" r="1.5" fill="#da1e28"/>
-  <text x="57" y="66" font-family="IBM Plex Mono, monospace" font-size="9" fill="#525252">out-of-distribution</text>
-
-  <text x="200" y="240" font-family="IBM Plex Mono, monospace" font-size="10" fill="#525252" text-anchor="middle" letter-spacing="1">OOD DETECTION</text>
-  <rect x="0.5" y="0.5" width="399" height="259" fill="none" stroke="#e0e0e0" stroke-width="1"/>
 </svg>

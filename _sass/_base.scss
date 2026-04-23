@@ -841,8 +841,9 @@ footer.sticky-bottom {
     .pub-thumb-img,
     img {
       width: 140px;
-      height: 94px;
-      object-fit: cover;
+      height: 140px;
+      object-fit: contain;
+      background-color: #fafafa;
       display: block;
       border: 1px solid var(--global-divider-color);
     }
