@@ -24,8 +24,9 @@ latest_posts:
   limit: 3 # leave blank to include all the blog posts
 ---
 
-__Ph.D. Student__ on generative models and domain adaptation methods for Earth Observation at _Conservatoire National des Arts et Métiers_, as part of [MAGE.](https://geo-mage.github.io)  
-Formerly MSc. SDIA (_Centrale Lille_) and MSc. ATIAM (_IRCAM_, _Sorbonne University_, _Telecom Paris_) 
+__Postdoctoral Researcher__ in the OCKHAM team at [INRIA](https://www.inria.fr/en) Lyon, working with [Mathurin Massias](https://mathurinm.github.io/) and [Quentin Bertrand](https://qb3.github.io/) on generative models and their evaluation.
+
+Formerly Ph.D. at _Conservatoire National des Arts et Métiers_ on generative models and domain adaptation methods for Earth Observation, as part of [MAGE.](https://geo-mage.github.io) MSc. SDIA (_Centrale Lille_) and MSc. ATIAM (_IRCAM_, _Sorbonne University_, _Telecom Paris_) 
 
 __Research Interests__: 
 
@@ -33,7 +34,7 @@ Generative Modeling, Flow Matching, Diffusion/Schrödinger bridges, Computationa
 
 
 <strong>Contact: </strong>
-      georges.lebellier [at] gmail [dot] com
+      georges.le-bellier [at] inria [dot] fr
 <br>
 <strong>Follow: </strong>
       <a href="https://bsky.app/profile/lebellig.bsky.social" target="_blank" title="Bluesky"><i class="fab fa-bluesky"></i> @lebellig</a>
