@@ -232,7 +232,7 @@ progress {
 .post {
   #markdown-content {
     p {
-      text-align: left;     // IBM Research doesn't use justified text
+      text-align: justify;  // Justify blog post body text
       max-width: 68ch;      // Optimal reading line length
       line-height: 1.75;
     }
