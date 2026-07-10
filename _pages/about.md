@@ -39,6 +39,8 @@ Generative Modeling, Flow Matching, Diffusion/Schrödinger bridges, Computationa
 <strong>Follow: </strong>
       <a href="https://bsky.app/profile/lebellig.bsky.social" target="_blank" title="Bluesky"><i class="fab fa-bluesky"></i> @lebellig</a>
       <strong> | </strong>
+      <a href="https://scholar.google.com/citations?user=4G7EJEwAAAAJ&hl=en" target="_blank" title="Google Scholar"><i class="ai ai-google-scholar"></i> Scholar</a>
+      <strong> | </strong>
       <a href="https://www.linkedin.com/in/georges-le-bellier/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i> LinkedIn</a>
       <strong> | </strong>
       <a href="https://github.com/lebellig" target="_blank" title="GitHub"><i class="fab fa-github"></i> lebellig</a>

@@ -101,7 +101,7 @@
       {%- if entry.arxiv -%}<a class="btn btn-sm z-depth-0" href="http://arxiv.org/abs/{{ entry.arxiv }}">arXiv</a>{%- endif -%}
       {%- if entry.bibtex_show -%}<a class="bibtex btn btn-sm z-depth-0" role="button">Bib</a>{%- endif -%}
       {%- if entry.html -%}<a class="btn btn-sm z-depth-0" href="{{ entry.html contains '://' | ternary: entry.html, entry.html | prepend: '/assets/html/' | relative_url }}">HTML</a>{%- endif -%}
-      {%- if entry.pdf -%}<a class="btn btn-sm z-depth-0" href="{{ entry.pdf contains '://' | ternary: entry.pdf, entry.pdf | relative_url }}">pdf</a>{%- endif -%}
+      {%- if entry.pdf -%}{%- if entry.pdf contains '://' -%}{%- assign pdf_url = entry.pdf -%}{%- else -%}{%- assign pdf_url = entry.pdf | prepend: '/assets/pdf/' | relative_url -%}{%- endif -%}<a class="btn btn-sm z-depth-0" href="{{ pdf_url }}">pdf</a>{%- endif -%}
       {%- if entry.supp -%}<a class="btn btn-sm z-depth-0" href="{{ entry.supp contains '://' | ternary: entry.supp, entry.supp | prepend: '/assets/pdf/' | relative_url }}">supp</a>{%- endif -%}
       {%- if entry.video -%}{%- if site.enable_video_embedding -%}<a class="abstract btn btn-sm z-depth-0" role="button">video</a>{%- else -%}<a class="btn btn-sm z-depth-0" href="{{ entry.video }}">video</a>{%- endif -%}{%- endif -%}
       {%- if entry.blog -%}<a class="btn btn-sm z-depth-0" href="{{ entry.blog }}">blog</a>{%- endif -%}

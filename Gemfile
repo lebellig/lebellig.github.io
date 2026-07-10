@@ -2,6 +2,15 @@ source 'https://rubygems.org'
 
 gem 'jekyll'
 
+# No longer default gems as of Ruby 3.4/4.0 — needed by jekyll / activesupport
+gem 'logger'
+gem 'benchmark'
+gem 'base64'
+gem 'bigdecimal'
+gem 'csv'
+gem 'drb'
+gem 'mutex_m'
+
 # Core plugins that directly affect site building
 group :jekyll_plugins do
     gem 'jekyll-archives'
