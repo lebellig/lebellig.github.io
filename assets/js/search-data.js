@@ -136,6 +136,13 @@ ninja.data = [{
           window.open("https://bsky.app/profile/lebellig.bsky.social", "_blank");
         },
       },{
+        id: 'social-scholar',
+        title: 'Google Scholar',
+        section: 'Socials',
+        handler: () => {
+          window.open("https://scholar.google.com/citations?user=4G7EJEwAAAAJ", "_blank");
+        },
+      },{
         id: 'social-email',
         title: 'email',
         section: 'Socials',
