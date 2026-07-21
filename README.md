@@ -1,3 +1,12 @@
+# Run locally
+
+```bash
+bundle install                    # install dependencies (first time only)
+bundle exec jekyll serve --livereload   # build and serve at http://localhost:4000
+```
+
+---
+
 # al-folio
 
 <div align="center">
