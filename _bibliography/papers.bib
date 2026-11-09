@@ -3,13 +3,30 @@
 
 @string{aps = {American Physical Society,}}
 
+@article{LEBELLIER2027110963,
+  title    = {InSARFlow: Riemannian flow matching for interferometric SAR},
+  author   = {Le Bellier, Georges and Breloy, Arnaud and Audebert, Nicolas},
+  journal  = {Signal Processing},
+  volume   = {252},
+  pages    = {110963},
+  year     = {2027},
+  issn     = {0165-1684},
+  doi      = {10.1016/j.sigpro.2026.110963},
+  url      = {https://www.sciencedirect.com/science/article/pii/S0165168426004767},
+  pdf      = {https://arxiv.org/abs/2611.00003},
+  code     = {https://github.com/lebellig/insarflow},
+  keywords = {Interferometric SAR, Flow matching, Riemannian geometry},
+  abstract = {Interferometric synthetic aperture radar (InSAR) enables the analysis of topological changes in natural sites or urban areas. This technique operates by recovering the surface displacement from the study of the phase difference (interferogram) between two or multiple SAR images of the same scene at different times. In practice, the use of phase denoising algorithms is necessary to extract relevant information from the interferograms, which motivated numerous developments in the past decade. Due to the inherent periodicity of phases, interferograms can naturally be represented as points on a Riemannian manifold (specifically, the flat torus). This strong prior knowledge motivates the design of learning-based methods that respect the interferogram’s intrinsic geometric constraints. Building on this observation, this paper introduces InSARFlow: a generative modeling framework for the denoising and generation of interferograms. Unlike conventional deep learning approaches formulated in Euclidean spaces, which may violate phase periodicity and produce invalid estimates, this method leverages Riemannian flow matching to learn distributional transports directly on the torus. The interest of this approach is demonstrated on two use cases: (1) realistic interferogram generation, in which we model the transport between uniform noise on the torus to real-world interferograms; (2) interferogram denoising, where InSARFlow transports noisy interferograms to their denoised counterparts. Extensive experiments on a controlled synthetic dataset validate the effectiveness of InSARFlow for interferogram denoising. The proposed approach consistently outperforms studied baselines, highlighting the benefits of geometry-aware learning on the torus. Code and weights available at https://github.com/lebellig/insarflow.},
+  selected = {true},
+  preview  = {riefm.svg}
+}
+
 @article{okabayashi:hal-05687821,
   TITLE = {{A²BM: Alignment-Aware Bridge Matching for Image-to-Image Translation}},
   AUTHOR = {Okabayashi†, Aimi and Le Bellier†, Georges and Audebert, Nicolas and Pelletier, Charlotte and Corpetti, Thomas and Courty, Nicolas},
   URL = {https://arxiv.org/abs/2607.16294},
-  JOURNAL  = {Preprint},
-  YEAR = {2026},
-  MONTH = Jul,
+  JOURNAL  = {WACV, IEEE/CVF Winter Conference on Applications of Computer Vision},
+  YEAR = {2027},
   KEYWORDS = {Generative models ; Data translation ; Image to image translation},
   PDF = {https://arxiv.org/pdf/2607.16294},
   HAL_ID = {hal-05687821},
@@ -45,7 +62,7 @@
   poster      = {finalPosterAI4EO.pdf},
   hal_id      = {hal-05140421},
   hal_version = {v1},
-  selected    = {true},
+  selected    = {false},
   preview     = {riefm.svg}
 }
 
